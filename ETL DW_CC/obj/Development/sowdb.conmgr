@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="sowdb"
+  DTS:DTSID="{85A178EA-FF70-420B-8005-E3B49D37AEB7}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=sowdb;Initial Catalog=DW_CC;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-ETL DW_CC-{85A178EA-FF70-420B-8005-E3B49D37AEB7}sowdb;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
