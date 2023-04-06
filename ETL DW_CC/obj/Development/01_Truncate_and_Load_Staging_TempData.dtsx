@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CheckpointFileName="C:\DW_CC\checkpoint.xml"
+  DTS:CreationDate="1/2/2023 2:18:52 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="7FR8JR2"
+  DTS:CreatorName="GRUPABPS\arkadiusz.drezek"
+  DTS:DTSID="{5F322BDA-2E3B-43DD-8680-46254A1F01CD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{D2FEA1F6-FE06-4E57-9C62-BDF7420BB60E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SQL Load stg TempData"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1704CD51-AE37-4488-A56A-C8EB589DB36D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Load stg TempData"
+      DTS:ThreadHint="0">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{B8414744-5D06-4D9E-A499-36F6DF4511F0}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="sqlLoad">
+          <DTS:VariableValue
+            DTS:DataType="8">SET ANSI_WARNINGS OFF;  WITH wychodzaca_dzienna AS ( 	SELECT s.sp_id 		,s.sp_numer 		,ak_id 		,ak_akt_id 		,re_id 		,re_data_wykonania 		,ktw_czas_rozmowy AS DurationInSeconds 		,'Wychodzący' PhoneCallType_Type 		,pakiet 		,t.tn_id AS PhoneNumber_Tn_id 		,kt_numer_telefonu AS PhoneNumber_PhoneNumber 		,tt_nazwa AS PhoneNumber_Type 		,t.tn_data_od AS PhoneNumber_DateFrom 		,t.tn_data_do AS PhoneNumber_DateTo 		,re_ret_id as ret_id 		,ret_nazwa AS Result_ktw_wynik 		,[Caller].US_ID AS Caller_US_ID 		,[Caller].US_NAME AS Caller_Name 		,[Caller].US_SURNAME AS Caller_Surname 		,DebtCollector.us_id DebtCollector_US_ID 		,DebtCollector.US_NAME AS DebtCollector_Name 		,DebtCollector.US_SURNAME AS DebtCollector_Surname 		,DebtCollector.op_data_od AS DebtCollector_DateFrom 		,DebtCollector.op_data_od AS DebtCollector_DateTo 		,Debtor.dl_id AS Debtor_Dl_id 		,Debtor.dl_nazwa AS Debtor_Name 		,CASE  			WHEN Debtor.dl_dt_id = 1 				THEN 'osoba fizyczna' 			WHEN Debtor.dl_dt_id = 2 				THEN 'os. fiz. prow. dział. gosp.' 			WHEN Debtor.dl_dt_id = 3 				THEN 'os. prawna' 			ELSE 'brak danych' 			END AS Debtor_Type 		,CASE  			WHEN Debtor.dl_pl_id = 1 				THEN 'kobieta' 			WHEN Debtor.dl_pl_id = 2 				THEN 'mezczyzna' 			WHEN Debtor.dl_pl_id = 3 				THEN 'firma' 			ELSE 'brak danych' 			END AS Debtor_Gender 		,Debtor.dl_pesel AS Debtor_Pesel 		,isnull([Address].ad_id, - 1) AS Address_Ad_ID 		,isnull([Address].ad_miejscowosc, 'Brak') AS Address_City 		,isnull([Address].ad_kod, 'Brak') AS Address_ZipCode 		,[Address].at_nazwa Address_Type 		,[Address].ad_data_od AS Address_DateFrom 		,[Address].ad_data_do AS Address_DateTo 	FROM dm_data_bps.dbo.predictivedialer_kampania_telefon_wynik(NOLOCK) 	JOIN dm_data_bps.dbo.predictivedialer_kampania_telefon kt(NOLOCK) ON ktw_telefon = kt.kt_id 	JOIN dm_data_bps.dbo.predictivedialer_kampania(NOLOCK) ON kt_kampania = kp_id 		AND kp_indywidualna = 0 	JOIN dm_data_bps.dbo.akcja a(NOLOCK) ON kt.kt_tag = a.ak_id 	JOIN dm_data_bps.dbo.sprawa s(NOLOCK) ON a.ak_sp_id = s.sp_id 	JOIN dm_logic_bps.dbo.Raport_6_widok_pom1_a v ON s.sp_id = v.sp_id 	JOIN dm_data_bps..rezultat ON re_ak_id = a.ak_id 		AND re_ret_id IN ( 			1 			,8 			,25 			,201 			,202 			,204 			,216 			,225 			,227 			,455 			,535 			) 		AND cast(re_data_wykonania AS DATE) = cast(getdate() AS DATE) /*between '20220101' and '20221107'*/ 	JOIN dm_data_bps..rezultat_typ ON re_ret_id = ret_id 	JOIN dm_data_bps..ge_user [Caller] ON replace(left(kp_nazwa, charindex('_', kp_nazwa)), '_', '') = [Caller].US_NAME + ' ' + [Caller].US_SURNAME 	JOIN ( 		SELECT sp_id 			,tn_id 			,tt_nazwa 			,tn_numer 			,tn_data_od 			,tn_data_do 		FROM dm_data_bps..sprawa 		JOIN dm_data_bps..sprawa_rola ON spr_sp_id = sp_id 		JOIN dm_data_bps..dluznik ON spr_dl_id = dl_id 		JOIN dm_data_bps..telefon ON tn_dl_id = dl_id 		JOIN dm_data_bps..telefon_typ ON tn_tt_id = tt_id 		) t ON t.sp_id = s.sp_id 		AND tn_numer = kt_numer_telefonu collate Polish_CI_AI 	LEFT JOIN ( 		SELECT op_sp_id 			,op_us_id 			,US_ID 			,US_NAME 			,US_SURNAME 			,op_data_od 			,op_data_do 		FROM dm_data_bps..GE_USER 		JOIN dm_data_bps..operator ON op_us_id = us_id 		WHERE op_opt_id = 1 			AND op_data_do IS NULL 		) AS DebtCollector ON DebtCollector.op_sp_id = s.sp_id 	LEFT JOIN ( 		SELECT TOP 1 		WITH ties dluznik.* 			,sp_id 			,tn_numer 			,spr_data_od 			,spr_data_do 		FROM dm_data_bps..sprawa 		JOIN dm_data_bps..sprawa_rola ON spr_sp_id = sp_id 		JOIN dm_data_bps..dluznik ON spr_dl_id = dl_id 		JOIN dm_data_bps..telefon ON tn_dl_id = dl_id 		ORDER BY ROW_NUMBER() OVER ( 				PARTITION BY sp_id 				,tn_numer ORDER BY spr_sprt_id ASC 				) 		) AS Debtor ON Debtor.sp_id = s.sp_id 		AND Debtor.tn_numer = kt_numer_telefonu collate Polish_CI_AI 	LEFT JOIN ( 		SELECT TOP 1 		WITH ties ad_id 			,ad_miejscowosc 			,ad_kod 			,at_nazwa 			,ad_data_od 			,ad_data_do 			,sp_id 			,tn_numer 		FROM dm_data_bps..sprawa 		JOIN dm_data_bps..sprawa_rola ON spr_sp_id = sp_id 		JOIN dm_data_bps..dluznik ON spr_dl_id = dl_id 		JOIN dm_data_bps..adres ON ad_dl_id = dl_id 		JOIN dm_data_bps..adres_typ ON ad_at_id = at_id 		JOIN dm_data_bps..telefon ON tn_dl_id = dl_id 		WHERE ISNULL(ad_data_do, '2100-01-01') &gt; cast(getdate() AS DATE) 		ORDER BY ROW_NUMBER() OVER ( 				PARTITION BY sp_id 				,tn_numer ORDER BY ad_at_id ASC 					,isnull(ad_data_do, '2100-01-01') DESC 				) 		) [Address] ON [Address].sp_id = s.sp_id 		AND [Address].tn_numer = kt_numer_telefonu collate Polish_CI_AI 	) 	,wychodzaca_indywidualna AS ( 	SELECT s.sp_id 		,s.sp_numer 		,ak_id 		,ak_akt_id 		,re_id 		,re_data_wykonania 		,ktw_czas_rozmowy AS DurationInSeconds 		,'Wychodzący' PhoneCallType_Type 		,pakiet 		,t.tn_id AS PhoneNumber_Tn_id 		,kt_numer_telefonu AS PhoneNumber_PhoneNumber 		,tt_nazwa AS PhoneNumber_Type 		,t.tn_data_od AS PhoneNumber_DateFrom 		,t.tn_data_do AS PhoneNumber_DateTo 		,re_ret_id as ret_id 		,ret_nazwa AS Result_ktw_wynik 		,[Caller].US_ID AS Caller_US_ID 		,[Caller].US_NAME AS Caller_Name 		,[Caller].US_SURNAME AS Caller_Surname 		,DebtCollector.us_id DebtCollector_US_ID 		,DebtCollector.US_NAME AS DebtCollector_Name 		,DebtCollector.US_SURNAME AS DebtCollector_Surname 		,DebtCollector.op_data_od AS DebtCollector_DateFrom 		,DebtCollector.op_data_od AS DebtCollector_DateTo 		,Debtor.dl_id AS Debtor_Dl_id 		,Debtor.dl_nazwa AS Debtor_Name 		,CASE  			WHEN Debtor.dl_dt_id = 1 				THEN 'osoba fizyczna' 			WHEN Debtor.dl_dt_id = 2 				THEN 'os. fiz. prow. dział. gosp.' 			WHEN Debtor.dl_dt_id = 3 				THEN 'os. prawna' 			ELSE 'brak danych' 			END AS Debtor_Type 		,CASE  			WHEN Debtor.dl_pl_id = 1 				THEN 'kobieta' 			WHEN Debtor.dl_pl_id = 2 				THEN 'mezczyzna' 			WHEN Debtor.dl_pl_id = 3 				THEN 'firma' 			ELSE 'brak danych' 			END AS Debtor_Gender 		,Debtor.dl_pesel AS Debtor_Pesel 		,isnull([Address].ad_id, - 1) AS Address_Ad_ID 		,isnull([Address].ad_miejscowosc, 'Brak') AS Address_City 		,isnull([Address].ad_kod, 'Brak') AS Address_ZipCode 		,[Address].at_nazwa Address_Type 		,[Address].ad_data_od AS Address_DateFrom 		,[Address].ad_data_do AS Address_DateTo 	FROM dm_data_bps.dbo.predictivedialer_kampania_telefon_wynik(NOLOCK) 	JOIN dm_data_bps.dbo.predictivedialer_kampania_telefon kt(NOLOCK) ON ktw_telefon = kt.kt_id 	JOIN dm_data_bps.dbo.predictivedialer_kampania(NOLOCK) ON kt_kampania = kp_id 		AND kp_indywidualna = 1 	JOIN dm_data_bps.dbo.akcja a(NOLOCK) ON kt.kt_tag = a.ak_id 	JOIN dm_data_bps.dbo.sprawa s(NOLOCK) ON a.ak_sp_id = s.sp_id 	JOIN dm_logic_bps.dbo.Raport_6_widok_pom1_a v ON s.sp_id = v.sp_id 	JOIN dm_data_bps..rezultat ON re_ak_id = a.ak_id 		AND re_ret_id IN ( 			1 			,8 			,25 			,201 			,202 			,204 			,216 			,225 			,227 			,455 			,535 			) 		AND cast(re_data_wykonania AS DATE) = cast(getdate() AS DATE) /*between '20220101' and '20221107'*/ 	JOIN dm_data_bps..rezultat_typ ON re_ret_id = ret_id 	JOIN dm_data_bps..ge_user [Caller] ON REPLACE(kp_nazwa, 'Indywidualna kolejka dla ', '') = [Caller].US_LOGIN collate Polish_CI_AI 	JOIN ( 		SELECT sp_id 			,tn_id 			,tt_nazwa 			,tn_numer 			,tn_data_od 			,tn_data_do 		FROM dm_data_bps..sprawa 		JOIN dm_data_bps..sprawa_rola ON spr_sp_id = sp_id 		JOIN dm_data_bps..dluznik ON spr_dl_id = dl_id 		JOIN dm_data_bps..telefon ON tn_dl_id = dl_id 		JOIN dm_data_bps..telefon_typ ON tn_tt_id = tt_id 		) t ON t.sp_id = s.sp_id 		AND tn_numer = kt_numer_telefonu collate Polish_CI_AI 	LEFT JOIN ( 		SELECT op_sp_id 			,op_us_id 			,US_ID 			,US_NAME 			,US_SURNAME 			,op_data_od 			,op_data_do 		FROM dm_data_bps..GE_USER 		JOIN dm_data_bps..operator ON op_us_id = us_id 		WHERE op_opt_id = 1 			AND op_data_do IS NULL 		) AS DebtCollector ON DebtCollector.op_sp_id = s.sp_id 	LEFT JOIN ( 		SELECT TOP 1 		WITH ties dluznik.* 			,sp_id 			,tn_numer 			,spr_data_od 			,spr_data_do 		FROM dm_data_bps..sprawa 		JOIN dm_data_bps..sprawa_rola ON spr_sp_id = sp_id 		JOIN dm_data_bps..dluznik ON spr_dl_id = dl_id 		JOIN dm_data_bps..telefon ON tn_dl_id = dl_id 		ORDER BY ROW_NUMBER() OVER ( 				PARTITION BY sp_id 				,tn_numer ORDER BY spr_sprt_id ASC 				) 		) AS Debtor ON Debtor.sp_id = s.sp_id 		AND Debtor.tn_numer = kt_numer_telefonu collate Polish_CI_AI 	LEFT JOIN ( 		SELECT TOP 1 		WITH ties ad_id 			,ad_miejscowosc 			,ad_kod 			,at_nazwa 			,ad_data_od 			,ad_data_do 			,sp_id 			,tn_numer 		FROM dm_data_bps..sprawa 		JOIN dm_data_bps..sprawa_rola ON spr_sp_id = sp_id 		JOIN dm_data_bps..dluznik ON spr_dl_id = dl_id 		JOIN dm_data_bps..adres ON ad_dl_id = dl_id 		JOIN dm_data_bps..adres_typ ON ad_at_id = at_id 		JOIN dm_data_bps..telefon ON tn_dl_id = dl_id 		WHERE ISNULL(ad_data_do, '2100-01-01') &gt; cast(getdate() AS DATE) 		ORDER BY ROW_NUMBER() OVER ( 				PARTITION BY sp_id 				,tn_numer ORDER BY ad_at_id ASC 					,isnull(ad_data_do, '2100-01-01') DESC 				) 		) [Address] ON [Address].sp_id = s.sp_id 		AND [Address].tn_numer = kt_numer_telefonu collate Polish_CI_AI 	) 	,wychodzaca_ctc AS ( 	SELECT s.sp_id 		,s.sp_numer 		,ak_id 		,ak_akt_id 		,re_id 		,re_data_wykonania 		,ctcw_czas_rozmowy AS DurationInSeconds 		,'Wychodzący' PhoneCallType_Type 		,pakiet 		,t.tn_id AS PhoneNumber_Tn_id 		,ctc_numer_telefonu AS PhoneNumber_PhoneNumber 		,tt_nazwa AS PhoneNumber_Type 		,t.tn_data_od AS PhoneNumber_DateFrom 		,t.tn_data_do AS PhoneNumber_DateTo 		,re_ret_id as ret_id 		,ret_nazwa AS Result_ktw_wynik 		,[Caller].US_ID AS Caller_US_ID 		,[Caller].US_NAME AS Caller_Name 		,[Caller].US_SURNAME AS Caller_Surname 		,DebtCollector.us_id DebtCollector_US_ID 		,DebtCollector.US_NAME AS DebtCollector_Name 		,DebtCollector.US_SURNAME AS DebtCollector_Surname 		,DebtCollector.op_data_od AS DebtCollector_DateFrom 		,DebtCollector.op_data_od AS DebtCollector_DateTo 		,Debtor.dl_id AS Debtor_Dl_id 		,Debtor.dl_nazwa AS Debtor_Name 		,CASE  			WHEN Debtor.dl_dt_id = 1 				THEN 'osoba fizyczna' 			WHEN Debtor.dl_dt_id = 2 				THEN 'os. fiz. prow. dział. gosp.' 			WHEN Debtor.dl_dt_id = 3 				THEN 'os. prawna' 			ELSE 'brak danych' 			END AS Debtor_Type 		,CASE  			WHEN Debtor.dl_pl_id = 1 				THEN 'kobieta' 			WHEN Debtor.dl_pl_id = 2 				THEN 'mezczyzna' 			WHEN Debtor.dl_pl_id = 3 				THEN 'firma' 			ELSE 'brak danych' 			END AS Debtor_Gender 		,Debtor.dl_pesel AS Debtor_Pesel 		,isnull([Address].ad_id, - 1) AS Address_Ad_ID 		,isnull([Address].ad_miejscowosc, 'Brak') AS Address_City 		,isnull([Address].ad_kod, 'Brak') AS Address_ZipCode 		,[Address].at_nazwa Address_Type 		,[Address].ad_data_od AS Address_DateFrom 		,[Address].ad_data_do AS Address_DateTo 	FROM dm_data_bps.dbo.[predictivedialer_click_to_call_wynik] 	JOIN dm_data_bps.dbo.[predictivedialer_click_to_call] ON [ctcw_telefon] = [ctc_id] 	JOIN dm_data_bps.dbo.predictivedialer_user ON usr_id = ctc_user 	JOIN dm_data_bps.dbo.akcja a(NOLOCK) ON ctc_tag = a.ak_id 	JOIN dm_data_bps.dbo.sprawa s(NOLOCK) ON a.ak_sp_id = s.sp_id 	JOIN dm_logic_bps.dbo.Raport_6_widok_pom1_a v ON s.sp_id = v.sp_id 	JOIN dm_data_bps..rezultat ON re_ak_id = a.ak_id 		AND re_ret_id IN ( 			1 			,8 			,25 			,201 			,202 			,204 			,216 			,225 			,227 			,455 			,535 			) 		AND cast(re_data_wykonania AS DATE) = cast(getdate() AS DATE) /*between '20220101' and '20221107'*/ 	JOIN dm_data_bps..rezultat_typ ON re_ret_id = ret_id 	JOIN dm_data_bps..ge_user [Caller] ON usr_nazwa = [Caller].US_NAME + ' ' + [Caller].US_SURNAME 	JOIN ( 		SELECT sp_id 			,tn_id 			,tt_nazwa 			,tn_numer 			,tn_data_od 			,tn_data_do 		FROM dm_data_bps..sprawa 		JOIN dm_data_bps..sprawa_rola ON spr_sp_id = sp_id 		JOIN dm_data_bps..dluznik ON spr_dl_id = dl_id 		JOIN dm_data_bps..telefon ON tn_dl_id = dl_id 		JOIN dm_data_bps..telefon_typ ON tn_tt_id = tt_id 		) t ON t.sp_id = s.sp_id 		AND tn_numer = ctc_numer_telefonu collate Polish_CI_AI 	LEFT JOIN ( 		SELECT op_sp_id 			,op_us_id 			,US_ID 			,US_NAME 			,US_SURNAME 			,op_data_od 			,op_data_do 		FROM dm_data_bps..GE_USER 		JOIN dm_data_bps..operator ON op_us_id = us_id 		WHERE op_opt_id = 1 			AND op_data_do IS NULL 		) AS DebtCollector ON DebtCollector.op_sp_id = s.sp_id 	LEFT JOIN ( 		SELECT TOP 1 		WITH ties dluznik.* 			,sp_id 			,tn_numer 			,spr_data_od 			,spr_data_do 		FROM dm_data_bps..sprawa 		JOIN dm_data_bps..sprawa_rola ON spr_sp_id = sp_id 		JOIN dm_data_bps..dluznik ON spr_dl_id = dl_id 		JOIN dm_data_bps..telefon ON tn_dl_id = dl_id 		ORDER BY ROW_NUMBER() OVER ( 				PARTITION BY sp_id 				,tn_numer ORDER BY spr_sprt_id ASC 				) 		) AS Debtor ON Debtor.sp_id = s.sp_id 		AND Debtor.tn_numer = ctc_numer_telefonu collate Polish_CI_AI 	LEFT JOIN ( 		SELECT TOP 1 		WITH ties ad_id 			,ad_miejscowosc 			,ad_kod 			,at_nazwa 			,ad_data_od 			,ad_data_do 			,sp_id 			,tn_numer 		FROM dm_data_bps..sprawa 		JOIN dm_data_bps..sprawa_rola ON spr_sp_id = sp_id 		JOIN dm_data_bps..dluznik ON spr_dl_id = dl_id 		JOIN dm_data_bps..adres ON ad_dl_id = dl_id 		JOIN dm_data_bps..adres_typ ON ad_at_id = at_id 		JOIN dm_data_bps..telefon ON tn_dl_id = dl_id 		WHERE ISNULL(ad_data_do, '2100-01-01') &gt; cast(getdate() AS DATE) 		ORDER BY ROW_NUMBER() OVER ( 				PARTITION BY sp_id 				,tn_numer ORDER BY ad_at_id ASC 					,isnull(ad_data_do, '2100-01-01') DESC 				) 		) [Address] ON [Address].sp_id = s.sp_id 		AND [Address].tn_numer = ctc_numer_telefonu collate Polish_CI_AI 	) 	,przychodzace AS ( 	SELECT s.sp_id 		,s.sp_numer 		,ak_id 		,ak_akt_id 		,re_id 		,re_data_wykonania 		,ptw_czas_rozmowy AS DurationInSeconds 		,'Przychodzący' AS PhoneCallType_Type 		,pakiet 		,t.tn_id AS PhoneNumber_Tn_id 		,pt_numer_telefonu AS PhoneNumber_PhoneNumber 		,tt_nazwa AS PhoneNumber_Type 		,t.tn_data_od AS PhoneNumber_DateFrom 		,t.tn_data_do AS PhoneNumber_DateTo 		,re_ret_id as ret_id 		,ret_nazwa AS Result_ktw_wynik 		,[Caller].US_ID AS Caller_US_ID 		,[Caller].US_NAME AS Caller_Name 		,[Caller].US_SURNAME AS Caller_Surname 		,DebtCollector.us_id DebtCollector_US_ID 		,DebtCollector.US_NAME AS DebtCollector_Name 		,DebtCollector.US_SURNAME AS DebtCollector_Surname 		,DebtCollector.op_data_od AS DebtCollector_DateFrom 		,DebtCollector.op_data_od AS DebtCollector_DateTo 		,Debtor.dl_id AS Debtor_Dl_id 		,Debtor.dl_nazwa AS Debtor_Name 		,CASE  			WHEN Debtor.dl_dt_id = 1 				THEN 'osoba fizyczna' 			WHEN Debtor.dl_dt_id = 2 				THEN 'os. fiz. prow. dział. gosp.' 			WHEN Debtor.dl_dt_id = 3 				THEN 'os. prawna' 			ELSE 'brak danych' 			END AS Debtor_Type 		,CASE  			WHEN Debtor.dl_pl_id = 1 				THEN 'kobieta' 			WHEN Debtor.dl_pl_id = 2 				THEN 'mezczyzna' 			WHEN Debtor.dl_pl_id = 3 				THEN 'firma' 			ELSE 'brak danych' 			END AS Debtor_Gender 		,Debtor.dl_pesel AS Debtor_Pesel 		,isnull([Address].ad_id, - 1) AS Address_Ad_ID 		,isnull([Address].ad_miejscowosc, 'Brak') AS Address_City 		,isnull([Address].ad_kod, 'Brak') AS Address_ZipCode 		,[Address].at_nazwa Address_Type 		,[Address].ad_data_od AS Address_DateFrom 		,[Address].ad_data_do AS Address_DateTo 	FROM dm_data_bps.dbo.predictivedialer_przychodzacy_telefon_wynik 	JOIN dm_data_bps.dbo.predictivedialer_przychodzacy_telefon kt(NOLOCK) ON ptw_pt_id = pt_id 	JOIN dm_data_bps.dbo.akcja a(NOLOCK) ON kt.pt_tag = a.ak_id 	JOIN dm_data_bps.dbo.sprawa s(NOLOCK) ON a.ak_sp_id = s.sp_id 	JOIN dm_logic_bps.dbo.Raport_6_widok_pom1_a v ON s.sp_id = v.sp_id 	JOIN dm_data_bps..rezultat ON re_ak_id = a.ak_id 		AND re_ret_id IN ( 			1 			,8 			,25 			,201 			,202 			,204 			,216 			,225 			,227 			,455 			,535 			) 		AND cast(re_data_wykonania AS DATE) = cast(getdate() AS DATE) /*between '20220101' and '20221107'*/ 	JOIN dm_data_bps..rezultat_typ ON re_ret_id = ret_id 	JOIN dm_data_bps..ge_user [Caller] ON re_us_id_wykonujacy = [Caller].US_ID 	JOIN ( 		SELECT sp_id 			,tn_id 			,tt_nazwa 			,tn_numer 			,tn_data_od 			,tn_data_do 		FROM dm_data_bps..sprawa 		JOIN dm_data_bps..sprawa_rola ON spr_sp_id = sp_id 		JOIN dm_data_bps..dluznik ON spr_dl_id = dl_id 		JOIN dm_data_bps..telefon ON tn_dl_id = dl_id 		JOIN dm_data_bps..telefon_typ ON tn_tt_id = tt_id 		) t ON t.sp_id = s.sp_id 		AND tn_numer = pt_numer_telefonu collate Polish_CI_AI 	LEFT JOIN ( 		SELECT op_sp_id 			,op_us_id 			,US_ID 			,US_NAME 			,US_SURNAME 			,op_data_od 			,op_data_do 		FROM dm_data_bps..GE_USER 		JOIN dm_data_bps..operator ON op_us_id = us_id 		WHERE op_opt_id = 1 			AND op_data_do IS NULL 		) AS DebtCollector ON DebtCollector.op_sp_id = s.sp_id 	LEFT JOIN ( 		SELECT TOP 1 		WITH ties dluznik.* 			,sp_id 			,tn_numer 			,spr_data_od 			,spr_data_do 		FROM dm_data_bps..sprawa 		JOIN dm_data_bps..sprawa_rola ON spr_sp_id = sp_id 		JOIN dm_data_bps..dluznik ON spr_dl_id = dl_id 		JOIN dm_data_bps..telefon ON tn_dl_id = dl_id 		ORDER BY ROW_NUMBER() OVER ( 				PARTITION BY sp_id 				,tn_numer ORDER BY spr_sprt_id ASC 				) 		) AS Debtor ON Debtor.sp_id = s.sp_id 		AND Debtor.tn_numer = pt_numer_telefonu collate Polish_CI_AI 	LEFT JOIN ( 		SELECT TOP 1 		WITH ties ad_id 			,ad_miejscowosc 			,ad_kod 			,at_nazwa 			,ad_data_od 			,ad_data_do 			,sp_id 			,tn_numer 		FROM dm_data_bps..sprawa 		JOIN dm_data_bps..sprawa_rola ON spr_sp_id = sp_id 		JOIN dm_data_bps..dluznik ON spr_dl_id = dl_id 		JOIN dm_data_bps..adres ON ad_dl_id = dl_id 		JOIN dm_data_bps..adres_typ ON ad_at_id = at_id 		JOIN dm_data_bps..telefon ON tn_dl_id = dl_id 		WHERE ISNULL(ad_data_do, '2100-01-01') &gt; cast(getdate() AS DATE) 		ORDER BY ROW_NUMBER() OVER ( 				PARTITION BY sp_id 				,tn_numer ORDER BY ad_at_id ASC 					,isnull(ad_data_do, '2100-01-01') DESC 				) 		) [Address] ON [Address].sp_id = s.sp_id 		AND [Address].tn_numer = pt_numer_telefonu collate Polish_CI_AI 	) INSERT INTO DW_CC.staging.TempData SELECT TOP 1 WITH ties * FROM ( 	SELECT * 	FROM wychodzaca_dzienna 	 	UNION 	 	SELECT * 	FROM wychodzaca_indywidualna 	 	UNION 	 	SELECT * 	FROM wychodzaca_ctc 	 	UNION 	 	SELECT * 	FROM przychodzace 	) cc ORDER BY ROW_NUMBER() OVER ( 		PARTITION BY re_id ORDER BY DurationInSeconds DESC 		)  SET ANSI_WARNINGS OFF</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F364A291-5432-42F8-8A5A-14311FB36F5E}"
+          SQLTask:SqlStmtSourceType="Variable"
+          SQLTask:SqlStatementSource="User::sqlLoad" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Truncate stg TempData"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BF497651-3406-48E7-94B8-AEE02C747AA4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Truncate stg TempData"
+      DTS:ThreadHint="0">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{6B7570C6-CF92-4249-8B4B-C128B5BE8D1E}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="sqlTruncate">
+          <DTS:VariableValue
+            DTS:DataType="8">TRUNCATE TABLE DW_CC.staging.TempData</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F364A291-5432-42F8-8A5A-14311FB36F5E}"
+          SQLTask:SqlStmtSourceType="Variable"
+          SQLTask:SqlStatementSource="User::sqlTruncate" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C6EC89F7-99C9-4B7F-AE9F-DB4549E336C5}"
+      DTS:From="Package\SQL Truncate stg TempData"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL Load stg TempData" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="212,42"
+          Id="Package\SQL Load stg TempData"
+          TopLeft="361,137" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\SQL Truncate stg TempData"
+          TopLeft="361,30" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="467,72">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

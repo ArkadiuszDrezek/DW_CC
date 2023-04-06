@@ -1,0 +1,2275 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/3/2023 12:21:23 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="7FR8JR2"
+  DTS:CreatorName="GRUPABPS\arkadiusz.drezek"
+  DTS:DTSID="{9F6BE32A-C80C-46FF-B035-1A09561A5024}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:TransactionOption="0"
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{F5D10B9D-ACCB-40B2-B333-9B7B6F0A0DF7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load ETL Tables"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C20DB3A9-22CF-4623-B80B-7B9B144D5909}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load ETL Tables"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{DCBEA078-7D6F-42AF-96D3-119C0FC698CA}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="NoChangeRowCount">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{D8C77B1E-F463-4987-82D1-AD76F69FA639}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="sqlSource">
+          <DTS:VariableValue
+            DTS:DataType="8">select top 1 with ties Caller_US_ID, Caller_Name, Caller_Surname, GETDATE() as LastUpdateDate  from DW_CC.staging.TempData  order by row_number() over (partition by Caller_US_ID order by Caller_US_ID)</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load ETL Tables\Add flags for new Type 2 records"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add flags for new Type 2 records"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load ETL Tables\Add flags for new Type 2 records.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load ETL Tables\Add flags for new Type 2 records.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output].Columns[EffectiveDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output].Columns[EffectiveDate]"
+                      name="EffectiveDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output].Columns[IsRowDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output].Columns[IsRowDeleted]"
+                      name="IsRowDeleted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_Bool)0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_Bool)0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output].Columns[IsCurrentRecord]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output].Columns[IsCurrentRecord]"
+                      name="IsCurrentRecord"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Y"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Y"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output].Columns[TargetCIUD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output].Columns[TargetCIUD]"
+                      name="TargetCIUD"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Insert"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Insert"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load ETL Tables\Add flags for new Type 2 records.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST - New Records to ETL DimCaller_Insert"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ETL].[DimCaller_Insert]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Connections[OleDbConnection]"
+                  connectionManagerID="{F364A291-5432-42F8-8A5A-14311FB36F5E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sowdb.DW_CC1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].Columns[IsRowDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsRowDeleted"
+                      externalMetadataColumnId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[IsRowDeleted]"
+                      lineageId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output].Columns[IsRowDeleted]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].Columns[EffectiveDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EffectiveDate"
+                      externalMetadataColumnId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveDate]"
+                      lineageId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output].Columns[EffectiveDate]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].Columns[IsCurrentRecord]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="IsCurrentRecord"
+                      externalMetadataColumnId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[IsCurrentRecord]"
+                      lineageId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output].Columns[IsCurrentRecord]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].Columns[Caller_US_ID]"
+                      cachedDataType="i4"
+                      cachedName="Caller_US_ID"
+                      externalMetadataColumnId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[us_id]"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_US_ID]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].Columns[Caller_Name]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Caller_Name"
+                      externalMetadataColumnId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Name]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].Columns[Caller_Surname]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Caller_Surname"
+                      externalMetadataColumnId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[Surname]"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Surname]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].Columns[TargetCUID]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="TargetCUID"
+                      externalMetadataColumnId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[TargetCIUD]"
+                      lineageId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output].Columns[TargetCUID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[us_id]"
+                      dataType="i4"
+                      name="us_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      codePage="1250"
+                      dataType="str"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[Surname]"
+                      codePage="1250"
+                      dataType="str"
+                      length="255"
+                      name="Surname" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[TargetCIUD]"
+                      dataType="wstr"
+                      length="20"
+                      name="TargetCIUD" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[IsRowDeleted]"
+                      dataType="bool"
+                      name="IsRowDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveDate]"
+                      dataType="dbTimeStamp"
+                      name="EffectiveDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[ExpirationDate]"
+                      dataType="dbTimeStamp"
+                      name="ExpirationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input].ExternalColumns[IsCurrentRecord]"
+                      dataType="wstr"
+                      length="1"
+                      name="IsCurrentRecord" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ETL Tables\LKP - See if row exists in target"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP - See if row exists in target"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select
+CallerID,
+us_id,
+Name as TargetName,
+Surname as TargetSurname
+from DW_CC.core.DimCaller
+where Dateto is null
+order by us_id</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select
+CallerID,
+us_id,
+Name as TargetName,
+Surname as TargetSurname
+from DW_CC.core.DimCaller
+where Dateto is null
+order by us_id) [refTable]
+where [refTable].[us_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CallerID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="us_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TargetName" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="TargetSurname" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1250"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_US_ID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load ETL Tables\LKP - See if row exists in target.Connections[OleDbConnection]"
+                  connectionManagerID="{F364A291-5432-42F8-8A5A-14311FB36F5E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sowdb.DW_CC1]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load ETL Tables\LKP - See if row exists in target.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load ETL Tables\LKP - See if row exists in target.Inputs[Lookup Input].Columns[Caller_US_ID]"
+                      cachedDataType="i4"
+                      cachedName="Caller_US_ID"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_US_ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">us_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load ETL Tables\LKP - See if row exists in target.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Match Output].Columns[TargetName]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Match Output].Columns[TargetName]"
+                      name="TargetName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">TargetName</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Match Output].Columns[TargetSurname]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Match Output].Columns[TargetSurname]"
+                      name="TargetSurname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">TargetSurname</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load ETL Tables\LKP - See if row exists in target.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load ETL Tables\LKP - See if row exists in target.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ETL Tables\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Load ETL Tables\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ETL Tables\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Load ETL Tables\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load ETL Tables\Multicast.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Load ETL Tables\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load ETL Tables\Multicast.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Load ETL Tables\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="New Type 2 Records to ETL Target DimCaller_Insert_NewType2"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ETL].[DimCaller_Insert_NewType2]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Connections[OleDbConnection]"
+                  connectionManagerID="{F364A291-5432-42F8-8A5A-14311FB36F5E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sowdb.DW_CC1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].Columns[EffectiveDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EffectiveDate"
+                      externalMetadataColumnId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveDate]"
+                      lineageId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output].Columns[EffectiveDate]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].Columns[IsRowDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsRowDeleted"
+                      externalMetadataColumnId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[IsRowDeleted]"
+                      lineageId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output].Columns[IsRowDeleted]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].Columns[IsCurrentRecord]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="IsCurrentRecord"
+                      externalMetadataColumnId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[IsCurrentRecord]"
+                      lineageId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output].Columns[IsCurrentRecord]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].Columns[TargetCIUD]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="TargetCIUD"
+                      externalMetadataColumnId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[TargetCIUD]"
+                      lineageId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output].Columns[TargetCIUD]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].Columns[Caller_US_ID]"
+                      cachedDataType="i4"
+                      cachedName="Caller_US_ID"
+                      externalMetadataColumnId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[us_id]"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_US_ID]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].Columns[Caller_Name]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Caller_Name"
+                      externalMetadataColumnId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Name]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].Columns[Caller_Surname]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Caller_Surname"
+                      externalMetadataColumnId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[Surname]"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Surname]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[us_id]"
+                      dataType="i4"
+                      name="us_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      codePage="1250"
+                      dataType="str"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[Surname]"
+                      codePage="1250"
+                      dataType="str"
+                      length="255"
+                      name="Surname" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[TargetCIUD]"
+                      dataType="wstr"
+                      length="20"
+                      name="TargetCIUD" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[IsRowDeleted]"
+                      dataType="bool"
+                      name="IsRowDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveDate]"
+                      dataType="dbTimeStamp"
+                      name="EffectiveDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[ExpirationDate]"
+                      dataType="dbTimeStamp"
+                      name="ExpirationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input].ExternalColumns[IsCurrentRecord]"
+                      dataType="wstr"
+                      length="1"
+                      name="IsCurrentRecord" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ETL Tables\NoChange Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="NoChange Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::NoChangeRowCount</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load ETL Tables\NoChange Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ETL Tables\NoChange Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Load ETL Tables\NoChange Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ETL Tables\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ETL].[DimCaller_Update_ExpiringType2]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load ETL Tables\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{F364A291-5432-42F8-8A5A-14311FB36F5E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sowdb.DW_CC1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ExpirationDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ExpirationDate"
+                      externalMetadataColumnId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExpirationDate]"
+                      lineageId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Output].Columns[ExpirationDate]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsCurrentRecord]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="IsCurrentRecord"
+                      externalMetadataColumnId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsCurrentRecord]"
+                      lineageId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Output].Columns[IsCurrentRecord]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TargetCIUD]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="TargetCIUD"
+                      externalMetadataColumnId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TargetCIUD]"
+                      lineageId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Output].Columns[TargetCIUD]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Caller_US_ID]"
+                      cachedDataType="i4"
+                      cachedName="Caller_US_ID"
+                      externalMetadataColumnId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[us_id]"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_US_ID]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Caller_Name]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Caller_Name"
+                      externalMetadataColumnId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Name]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Caller_Surname]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Caller_Surname"
+                      externalMetadataColumnId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Surname]"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Surname]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[us_id]"
+                      dataType="i4"
+                      name="us_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      codePage="1250"
+                      dataType="str"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Surname]"
+                      codePage="1250"
+                      dataType="str"
+                      length="255"
+                      name="Surname" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TargetCIUD]"
+                      dataType="wstr"
+                      length="20"
+                      name="TargetCIUD" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsRowDeleted]"
+                      dataType="bool"
+                      name="IsRowDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveDate]"
+                      dataType="dbTimeStamp"
+                      name="EffectiveDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExpirationDate]"
+                      dataType="dbTimeStamp"
+                      name="ExpirationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsCurrentRecord]"
+                      dataType="wstr"
+                      length="1"
+                      name="IsCurrentRecord" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ETL Tables\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ETL Tables\Set Flags for New records"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Set Flags for New records"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load ETL Tables\Set Flags for New records.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load ETL Tables\Set Flags for New records.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output].Columns[TargetCUID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output].Columns[TargetCUID]"
+                      name="TargetCUID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Created"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Created"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output].Columns[IsRowDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output].Columns[IsRowDeleted]"
+                      name="IsRowDeleted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_BOOL)0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_BOOL)0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output].Columns[EffectiveDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output].Columns[EffectiveDate]"
+                      name="EffectiveDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output].Columns[IsCurrentRecord]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output].Columns[IsCurrentRecord]"
+                      name="IsCurrentRecord"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Y"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Y"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load ETL Tables\Set Flags for New records.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ETL Tables\Set Flags to end date old records"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Set Flags to end date old records"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load ETL Tables\Set Flags to end date old records.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load ETL Tables\Set Flags to end date old records.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Output].Columns[ExpirationDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Output].Columns[ExpirationDate]"
+                      name="ExpirationDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Output].Columns[IsCurrentRecord]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Output].Columns[IsCurrentRecord]"
+                      name="IsCurrentRecord"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"N"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"N"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Output].Columns[TargetCIUD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Output].Columns[TargetCIUD]"
+                      name="TargetCIUD"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Expire"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Expire"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load ETL Tables\Set Flags to end date old records.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ETL Tables\SPL - See if Type 2 Change"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="SPL - See if Type 2 Change"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load ETL Tables\SPL - See if Type 2 Change.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load ETL Tables\SPL - See if Type 2 Change.Inputs[Conditional Split Input].Columns[Caller_Name]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Caller_Name"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Name]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\SPL - See if Type 2 Change.Inputs[Conditional Split Input].Columns[Caller_Surname]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Caller_Surname"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Surname]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\SPL - See if Type 2 Change.Inputs[Conditional Split Input].Columns[TargetName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="TargetName"
+                      lineageId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Match Output].Columns[TargetName]" />
+                    <inputColumn
+                      refId="Package\Load ETL Tables\SPL - See if Type 2 Change.Inputs[Conditional Split Input].Columns[TargetSurname]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="TargetSurname"
+                      lineageId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Match Output].Columns[TargetSurname]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ETL Tables\SPL - See if Type 2 Change.Outputs[Type2Change]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Type2Change"
+                  synchronousInputId="Package\Load ETL Tables\SPL - See if Type 2 Change.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">(#{Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Name]} != #{Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Match Output].Columns[TargetName]} || #{Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Surname]} != #{Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Match Output].Columns[TargetSurname]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">(Caller_Name != TargetName || Caller_Surname != TargetSurname)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load ETL Tables\SPL - See if Type 2 Change.Outputs[NoType2Change]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="NoType2Change"
+                  synchronousInputId="Package\Load ETL Tables\SPL - See if Type 2 Change.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load ETL Tables\SPL - See if Type 2 Change.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load ETL Tables\SPL - See if Type 2 Change.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\SPL - See if Type 2 Change.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\SPL - See if Type 2 Change.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\SPL - See if Type 2 Change.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\SPL - See if Type 2 Change.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ETL Tables\SRC - Source Set Based"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - Source Set Based"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::sqlSource</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load ETL Tables\SRC - Source Set Based.Connections[OleDbConnection]"
+                  connectionManagerID="{F364A291-5432-42F8-8A5A-14311FB36F5E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sowdb.DW_CC1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_US_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].ExternalColumns[Caller_US_ID]"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_US_ID]"
+                      name="Caller_US_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Name]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].ExternalColumns[Caller_Name]"
+                      length="255"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Name]"
+                      name="Caller_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Surname]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].ExternalColumns[Caller_Surname]"
+                      length="255"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[Caller_Surname]"
+                      name="Caller_Surname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[LastUpdateDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].ExternalColumns[LastUpdateDate]"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].Columns[LastUpdateDate]"
+                      name="LastUpdateDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].ExternalColumns[Caller_US_ID]"
+                      dataType="i4"
+                      name="Caller_US_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].ExternalColumns[Caller_Name]"
+                      codePage="1250"
+                      dataType="str"
+                      length="255"
+                      name="Caller_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].ExternalColumns[Caller_Surname]"
+                      codePage="1250"
+                      dataType="str"
+                      length="255"
+                      name="Caller_Surname" />
+                    <externalMetadataColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output].ExternalColumns[LastUpdateDate]"
+                      dataType="dbTimeStamp"
+                      name="LastUpdateDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Error Output].Columns[Caller_US_ID]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Error Output].Columns[Caller_US_ID]"
+                      name="Caller_US_ID" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Error Output].Columns[Caller_Name]"
+                      codePage="1250"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Error Output].Columns[Caller_Name]"
+                      name="Caller_Name" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Error Output].Columns[Caller_Surname]"
+                      codePage="1250"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Error Output].Columns[Caller_Surname]"
+                      name="Caller_Surname" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Error Output].Columns[LastUpdateDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Error Output].Columns[LastUpdateDate]"
+                      name="LastUpdateDate" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load ETL Tables.Paths[Derived Column Output]"
+              endId="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load ETL Tables\Set Flags for New records.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load ETL Tables.Paths[Derived Column Output1]"
+              endId="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load ETL Tables\Add flags for new Type 2 records.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load ETL Tables.Paths[Derived Column Output2]"
+              endId="Package\Load ETL Tables\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load ETL Tables\Set Flags to end date old records.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load ETL Tables.Paths[Lookup Match Output]"
+              endId="Package\Load ETL Tables\SPL - See if Type 2 Change.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load ETL Tables.Paths[Lookup No Match Output]"
+              endId="Package\Load ETL Tables\Set Flags for New records.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Load ETL Tables\LKP - See if row exists in target.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Load ETL Tables.Paths[Multicast Output 1]"
+              endId="Package\Load ETL Tables\Add flags for new Type 2 records.Inputs[Derived Column Input]"
+              name="Multicast Output 1"
+              startId="Package\Load ETL Tables\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Load ETL Tables.Paths[Multicast Output 2]"
+              endId="Package\Load ETL Tables\Set Flags to end date old records.Inputs[Derived Column Input]"
+              name="Multicast Output 2"
+              startId="Package\Load ETL Tables\Multicast.Outputs[Multicast Output 2]" />
+            <path
+              refId="Package\Load ETL Tables.Paths[NoType2Change]"
+              endId="Package\Load ETL Tables\NoChange Row Count.Inputs[Row Count Input 1]"
+              name="NoType2Change"
+              startId="Package\Load ETL Tables\SPL - See if Type 2 Change.Outputs[NoType2Change]" />
+            <path
+              refId="Package\Load ETL Tables.Paths[OLE DB Source Output]"
+              endId="Package\Load ETL Tables\LKP - See if row exists in target.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load ETL Tables\SRC - Source Set Based.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load ETL Tables.Paths[Type2Change]"
+              endId="Package\Load ETL Tables\Multicast.Inputs[Multicast Input 1]"
+              name="Type2Change"
+              startId="Package\Load ETL Tables\SPL - See if Type 2 Change.Outputs[Type2Change]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate ETL Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{321AC7B0-959D-4C34-B4C7-6A6FCBD7D14B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate ETL Tables"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F364A291-5432-42F8-8A5A-14311FB36F5E}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE DW_CC.[ETL].[DimCaller_Insert]&#xA;&#xA;TRUNCATE TABLE DW_CC.[ETL].[DimCaller_Insert_NewType2]&#xA;&#xA;&#xA;TRUNCATE TABLE DW_CC.[ETL].[DimCaller_Update_ExpiringType2]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transactioned SQL Commands"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{4CAB7D3C-9FCB-4E99-AF36-DD40AC89508A}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transactioned SQL Commands"
+      DTS:TransactionOption="0">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{88FA8656-7E33-4EE3-BA16-AB169FD26DB1}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="sqlInsert">
+          <DTS:VariableValue
+            DTS:DataType="8">insert into DW_CC.core.DimCaller ([us_id], [Name], [Surname], [DateFrom]) select us_id,Name, Surname,EffectiveDate  from [DW_CC].ETL.[DimCaller_Insert]</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{02361DDF-D329-497C-B117-13E251CEFDCC}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="sqlInsertNewType2">
+          <DTS:VariableValue
+            DTS:DataType="8">insert into DW_CC.core.DimCaller ([us_id], [Name], [Surname], [DateFrom]) select us_id,Name, Surname,EffectiveDate  from [DW_CC].ETL.[DimCaller_Insert_NewType2]</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{6F57280F-7268-49F1-BEC8-98DBF1FC3646}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="sqlUpdateEndDateType2">
+          <DTS:VariableValue
+            DTS:DataType="8">UPDATE DW_CC.core.DimCaller  set	DateTo = u.ExpirationDate FROM DW_CC.core.DimCaller c JOIN DW_CC.ETL.DimCaller_Update_ExpiringType2 u ON c.us_id = u.us_id WHERE c.DateTo IS NULL</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Transactioned SQL Commands\SQL - End Date Expired Records"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A7EDE570-983F-4C44-929B-0ED69D8F8AA8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - End Date Expired Records"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F364A291-5432-42F8-8A5A-14311FB36F5E}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sqlUpdateEndDateType2" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transactioned SQL Commands\SQL - Insert New Records"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{EACD97FD-9E9C-4914-9F8B-026EEF97DE0E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Insert New Records"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F364A291-5432-42F8-8A5A-14311FB36F5E}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sqlInsert" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transactioned SQL Commands\SQL - Insert New Type 2 Records"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5E0C9077-E0C9-484A-B6BF-0A8C55A851C1}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Insert New Type 2 Records"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F364A291-5432-42F8-8A5A-14311FB36F5E}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::sqlInsertNewType2" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transactioned SQL Commands.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{FEA2E961-D75C-4B7C-BC54-9BAD417D04FA}"
+          DTS:From="Package\Transactioned SQL Commands\SQL - End Date Expired Records"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Transactioned SQL Commands\SQL - Insert New Records" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transactioned SQL Commands.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{7E85E4E9-50BC-4402-AFCE-830177EFBCE2}"
+          DTS:From="Package\Transactioned SQL Commands\SQL - Insert New Records"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Transactioned SQL Commands\SQL - Insert New Type 2 Records" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{747AAE13-5F82-4608-BCB9-033E18FB04C6}"
+      DTS:From="Package\SQL - Truncate ETL Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load ETL Tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{40A6E709-2217-4315-87D2-24F5C098D8BB}"
+      DTS:From="Package\Load ETL Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Transactioned SQL Commands" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Load ETL Tables"
+          TopLeft="326.5,131" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\SQL - Truncate ETL Tables"
+          TopLeft="326.5,38" />
+        <NodeLayout
+          Size="231,42"
+          Id="Package\Transactioned SQL Commands\SQL - End Date Expired Records"
+          TopLeft="31,14" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Transactioned SQL Commands\SQL - Insert New Records"
+          TopLeft="31,98" />
+        <NodeLayout
+          Size="236,42"
+          Id="Package\Transactioned SQL Commands\SQL - Insert New Type 2 Records"
+          TopLeft="31,182" />
+        <EdgeLayout
+          Id="Package\Transactioned SQL Commands.PrecedenceConstraints[Constraint]"
+          TopLeft="146.5,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15,42"
+              Start="0,0"
+              End="-15,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17"
+                    Point2="0,21"
+                    Point3="-4,21" />
+                  <mssgle:LineSegment
+                    End="-11,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11,21"
+                    Point2="-15,21"
+                    Point3="-15,25" />
+                  <mssgle:LineSegment
+                    End="-15,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transactioned SQL Commands.PrecedenceConstraints[Constraint 1]"
+          TopLeft="131.5,140">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.5,42"
+              Start="0,0"
+              End="17.5,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17"
+                    Point2="0,21"
+                    Point3="4,21" />
+                  <mssgle:LineSegment
+                    End="13.5,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.5,21"
+                    Point2="17.5,21"
+                    Point3="17.5,25" />
+                  <mssgle:LineSegment
+                    End="17.5,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="301,277"
+          Size="301,320"
+          Id="Package\Transactioned SQL Commands"
+          TopLeft="283,249" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="429,80">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="431.25,173">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load ETL Tables">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="284,42"
+          Id="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2"
+          TopLeft="167.25,409" />
+        <NodeLayout
+          Size="284,42"
+          Id="Package\Load ETL Tables\Set Flags for New records"
+          TopLeft="167.25,142" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Load ETL Tables\NoChange Row Count"
+          TopLeft="892,250" />
+        <NodeLayout
+          Size="235,42"
+          Id="Package\Load ETL Tables\Set Flags to end date old records"
+          TopLeft="567.833333333333,405" />
+        <NodeLayout
+          Size="235,42"
+          Id="Package\Load ETL Tables\SRC - Source Set Based"
+          TopLeft="567.833333333333,39" />
+        <NodeLayout
+          Size="235,42"
+          Id="Package\Load ETL Tables\Multicast"
+          TopLeft="567.833333333333,326" />
+        <NodeLayout
+          Size="235,42"
+          Id="Package\Load ETL Tables\OLE DB Destination"
+          TopLeft="567.833333333333,504" />
+        <NodeLayout
+          Size="235,42"
+          Id="Package\Load ETL Tables\SPL - See if Type 2 Change"
+          TopLeft="567.833333333333,243" />
+        <NodeLayout
+          Size="284,42"
+          Id="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert"
+          TopLeft="167.25,239" />
+        <NodeLayout
+          Size="284,42"
+          Id="Package\Load ETL Tables\Add flags for new Type 2 records"
+          TopLeft="167.25,322" />
+        <NodeLayout
+          Size="235,42"
+          Id="Package\Load ETL Tables\LKP - See if row exists in target"
+          TopLeft="567.833333333333,144" />
+        <EdgeLayout
+          Id="Package\Load ETL Tables.Paths[Type2Change]"
+          TopLeft="685.333333333333,285">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-31.01244140625,10.91845703125,62.0248828125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ETL Tables.Paths[OLE DB Source Output]"
+          TopLeft="685.333333333333,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63"
+              Start="0,0"
+              End="0,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ETL Tables.Paths[NoType2Change]"
+          TopLeft="802.833333333333,267.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="89.1666666666666,0"
+              Start="0,0"
+              End="81.6666666666666,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="81.6666666666666,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="4.14198567708331,5,73.3826953125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ETL Tables.Paths[Multicast Output 2]"
+          TopLeft="685.333333333333,368">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ETL Tables.Paths[Multicast Output 1]"
+          TopLeft="567.833333333333,345">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-116.583333333333,0"
+              Start="0,0"
+              End="-109.083333333333,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-109.083333333333,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ETL Tables.Paths[Lookup No Match Output]"
+          TopLeft="567.833333333333,164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-116.583333333333,0"
+              Start="0,0"
+              End="-109.083333333333,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-109.083333333333,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-110.348053385417,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ETL Tables.Paths[Lookup Match Output]"
+          TopLeft="685.333333333333,186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,18.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ETL Tables.Paths[Derived Column Output2]"
+          TopLeft="685.333333333333,447">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ETL Tables.Paths[Derived Column Output1]"
+          TopLeft="309.25,364">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ETL Tables.Paths[Derived Column Output]"
+          TopLeft="309.25,184">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load ETL Tables\New Type 2 Records to ETL Target DimCaller_Insert_NewType2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load ETL Tables\SRC - Source Set Based">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load ETL Tables\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load ETL Tables\DST - New Records to ETL DimCaller_Insert">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load ETL Tables\LKP - See if row exists in target">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
