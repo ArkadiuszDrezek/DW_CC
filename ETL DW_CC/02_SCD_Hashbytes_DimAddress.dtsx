@@ -12,8 +12,8 @@
   DTS:ObjectName="02_SCD_Hashbytes_DimAddress"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{8DC966EE-94D4-4580-9B97-75BA19EA969B}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{721078E8-1321-44E1-81D3-F196AAC63FF1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -24,7 +24,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="sqlInsertUpdateDimAddress">
       <DTS:VariableValue
-        DTS:DataType="8">UPDATE A SET A.DateTo = getdate() FROM staging.DimAddress AS UA JOIN core.DimAddress AS A ON UA.historicalhashkey = CONVERT(VARBINARY(20), HASHBYTES('MD5', CONCAT ( 				A.ad_id 				,' ' 				))) WHERE A.DateTo IS NULL and ad_id &gt; 0  INSERT INTO core.DimAddress ( 	[ad_id] 	,[City] 	,[ZipCode] 	,[Type] 	,[Address_DateTo] 	,[DateFrom] 	,[DateTo] 	) SELECT Address_Ad_id 	,Address_City 	,[Address_ZipCode] 	,[Address_Type] 	,[Address_DateTo] 	,rowstartdate 	,NULL FROM staging.DimAddress WHERE Address_DateTo &gt; getdate()   IF NOT EXISTS ( 		SELECT 1 		FROM core.DimAddress 		WHERE AddressID = - 1 		) BEGIN 	SET IDENTITY_INSERT core.DimAddress ON  	INSERT INTO core.DimAddress ( 		[AddressID] 		,[ad_id] 		,[City] 		,[ZipCode] 		,[Type] 		,[Address_DateTo] 		,[DateFrom] 		,[DateTo] 		) 	SELECT - 1 		,- 1 		,'unknown' 		,'unknown' 		,'unknown' 		,NULL 		,null 		,NULL  	SET IDENTITY_INSERT core.DimAddress OFF END</DTS:VariableValue>
+        DTS:DataType="8">UPDATE A SET A.DateTo = getdate() FROM staging.DimAddress AS UA JOIN core.DimAddress AS A ON UA.historicalhashkey = CONVERT(VARBINARY(20), HASHBYTES('MD5', CONCAT ( 				A.ad_id 				,' ' 				))) WHERE A.DateTo IS NULL 	AND ad_id &gt; 0   IF NOT EXISTS ( 		SELECT 1 		FROM core.DimAddress 		WHERE AddressID = - 1 		) BEGIN 	SET IDENTITY_INSERT core.DimAddress ON  	INSERT INTO core.DimAddress ( 		[AddressID] 		,[ad_id] 		,[City] 		,[ZipCode] 		,[Type] 		,[Address_DateTo] 		,[DateFrom] 		,[DateTo] 		) 	SELECT - 1 		,- 1 		,'unknown' 		,'unknown' 		,'unknown' 		,NULL 		,NULL 		,NULL  	SET IDENTITY_INSERT core.DimAddress OFF END  INSERT INTO core.DimAddress ( 	[ad_id] 	,[City] 	,[ZipCode] 	,[Type] 	,[Address_DateTo] 	,[DateFrom] 	,[DateTo] 	) SELECT Address_Ad_id 	,Address_City 	,[Address_ZipCode] 	,[Address_Type] 	,[Address_DateTo] 	,rowstartdate 	,NULL FROM staging.DimAddress WHERE Address_DateTo &gt; getdate()</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
