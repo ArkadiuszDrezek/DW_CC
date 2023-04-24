@@ -5,15 +5,15 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="7FR8JR2"
   DTS:CreatorName="GRUPABPS\arkadiusz.drezek"
-  DTS:DTSID="{2DD7B8E6-457D-4153-9991-792DE207EEBF}"
+  DTS:DTSID="{9D2B5583-D781-4B0F-9EC6-CD50C5443C02}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.845.0"
   DTS:LocaleID="1045"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="09_Load_FactTable"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{87B1C4F0-23A2-4585-AB0F-20E7581C622B}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{91024C60-42D5-4565-8944-6DD1FE1680A3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>

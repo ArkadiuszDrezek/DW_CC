@@ -2,10 +2,10 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>ETL DW_CC</Name>
-    <LastWriteTime>2023-03-30T10:06:57.1774076Z</LastWriteTime>
+    <LastWriteTime>2023-04-24T07:17:41.2496438Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
-    <Salt>2FwqXvMb</Salt>
-    <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAABU/s0rW9ZO2TYmd4B52QblAAAAAASAAACgAAAAEAAAAK/7/TWmDB5Wq7QJTiTDzHooAAAAHKiUwNuIwFpUZXOX9i7KLY9pX+2tf0iKmaRKWok84Ep26bRFQYTgtRQAAACct9uZebkWtnEKX5sNBUYRACWFew==</LastKnownProtectedHashedPassword>
+    <Salt>UPaisjm0</Salt>
+    <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAAUyWEgzbETmgc9S36OIWGAAAAAAASAAACgAAAAEAAAAAdU539KY/WKhDwCAvVF0K0oAAAAwrnTPNh4gipvTmEkuno3RfTws5j4mcA0t72DPtDmlzZ8xZ7jzOFYcRQAAACVX9hh2lkHCX8f1Krv8Rlc3iZ9mw==</LastKnownProtectedHashedPassword>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
@@ -13,98 +13,105 @@
       <LastWriteTime>2023-03-30T10:36:46.4086314Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
       <Salt>PC53rdvx</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAC1seouJ80IqIAF8dkGLMWNAAAAAASAAACgAAAAEAAAAAeLQON3bS7+QfMxw9hpwvEoAAAAmIgytGs9j7mR+5dOK+J4C4qIyZbCk57rgpaBe2jh+bmOx4P7WyYLbBQAAAAHrjoQW4ubwkHjlAKKZzoIIO6mbw==</LastKnownProtectedHashedPassword>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAACQDIPpvXt8XAJTh6aqgo/eAAAAAASAAACgAAAAEAAAADAuygR5oFqEGpsIluHFd1soAAAAjG4iUDamTVhkwtCF9Ni6Xb8Qt+2fK2yCuwoYjMqIBFtxlyTpzP55uBQAAAC2F4eya1WhMFBQq0Egg4hyjVNJhA==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>02_SCD_Hashbytes_DimAddress.dtsx</Name>
       <LastWriteTime>2023-04-21T06:02:45.8857834Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
       <Salt>8F3CAxWe</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAABlporXciwNDpct0+ZM+Vw5AAAAAASAAACgAAAAEAAAAIiwSNytqiYnl2i2Byu3aZwoAAAAqpK/Ably57ZHb+I0Nw/3zjMUt8Wx4OBzzJcO9IhS0Ede+yJUoCfgGxQAAACBUYOVhv00wd0K1QD9w42T2K4zjA==</LastKnownProtectedHashedPassword>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAA8pDiJoIyIGPy8cE8+HyYXAAAAAASAAACgAAAAEAAAAFzhi3FsttRY6kAeG3260BAoAAAAV8DnRnTK7ROL4ke9k0NKX9xNO4uyh7+nGq3IlevpRYx76c6L62DLHBQAAABL+01RvMvfZB3q3fMbdeQ7NrNJpg==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>03_SCD_Set_Based_DimCaller.dtsx</Name>
       <LastWriteTime>2023-03-01T09:41:05.2802705Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
       <Salt>2W1keCPt</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAA+c49A8ODtPexVt0DbwOc5AAAAAASAAACgAAAAEAAAAFnLQLuiyICRkRIdfPAfL5MoAAAAvBUqIFsV6mQircAoL3VluLWDc/aUqXWt0Lm7i79drO+a/yBOGwvHKxQAAAAjhEvLrQgC5BeRnMtUmoKshUv3dw==</LastKnownProtectedHashedPassword>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAADsZHfA9TmaNgjrsAFs8CBmAAAAAASAAACgAAAAEAAAAK1+WLNq521z3pbiLZCg6McoAAAAD8oENjnBZRlmaWUfdAvVbt68OS/4vteqMT2kleYd+31zRkA09fPmIhQAAABKjHyAYgx/ebajwYXwN+7Zq+D9UA==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>04_CDC_Initial_Load_DimDebtCollector.dtsx</Name>
       <LastWriteTime>2023-03-01T09:42:00.404471Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
       <Salt>ZVUoak8d</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAADs/759cmstkEZ0pEBtDayKAAAAAASAAACgAAAAEAAAABnbAw9cZ9boJyiH15MthW0oAAAAjzTSxfZfOp6lspaa6hQDPez9AWnuH/0kLzVsO/gNO2CcorxIavtAZhQAAACeritcbC2/PT7ZQlMVb+L5awMdCA==</LastKnownProtectedHashedPassword>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAADOSo6OZ8ICwG17PohGSDxRAAAAAASAAACgAAAAEAAAAK74NXaH+YoNJPmLL5wLXCQoAAAA6vgZu10jJD3/sQ+51RBKEZDhPLgkllRhdXxz8t43TAK20r6IEuC/7xQAAAD2jiyPG97P9eh8WHLKR38SagBtFg==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>04_CDC_Incremental_Loads_DimDebtCollector.dtsx</Name>
-      <LastWriteTime>2023-03-01T09:41:37.7893843Z</LastWriteTime>
+      <LastWriteTime>2023-04-21T06:25:43.8609709Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
-      <Salt>3j8QXfe3</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAACno9NXMu9Yw0wu2/63RwS2AAAAAASAAACgAAAAEAAAALimyTy0QD239P40CnqVAo0oAAAAeeOPmPMkRPEuqscdgeDAvIqGcXk09uDhjJXdDDKSO932z+Z9JZKkzxQAAADOTYRD1v4xr9BShn97dU/XWhxb0w==</LastKnownProtectedHashedPassword>
+      <Salt>DH5XB3Ka</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAC0k+DJI4WbqeaWECFF4jBcAAAAAASAAACgAAAAEAAAAEBusQc1Eln48wnRauC2RM8oAAAAqnNS5WCWowQXdsMzqbcEpJe6UKG83LZtAE54wMqO+19o5lc0lqq9RBQAAAAP5026jlxQXConPb4ypc4/9oB3YQ==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>05_Load_DimDebtLiability.dtsx</Name>
       <LastWriteTime>2023-03-01T09:42:12.1998843Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
       <Salt>XbHAQhgJ</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAAvgWrqJNSHTYyihZoidwp6AAAAAASAAACgAAAAEAAAABFe0VdeDiRHA7kd6vkM5fEoAAAAXKQl2CXPr05RsOPViArUgk0YHcmXYHACZBYTrXcVTTzw3DmZKaN1gBQAAAAbhCY8fj1MLrds5yRJT9qcabp/ZQ==</LastKnownProtectedHashedPassword>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAChA5t2oiXqmvDKjYEKaQl8AAAAAASAAACgAAAAEAAAAAl8l2geRzpul2qRANU22XooAAAAG+MxX/1sVOe7WiS4S054mv3iYfEAlP34cgMS9mmiCnmkHBPza569XxQAAACd/AppZFtIHno6dD523ppR1ihthA==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>LoadBalancer_Master.dtsx</Name>
-      <LastWriteTime>2023-04-21T06:07:17.2682135Z</LastWriteTime>
+      <LastWriteTime>2023-04-24T07:14:46.3339351Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
-      <Salt>dUJv7HuH</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAB7mJNLozjkTkN2Y8wKG1DdAAAAAASAAACgAAAAEAAAAHVtcJTNEI9K4A1LRfWFJLYoAAAATEScmCktBGhjU9l+v+2tQzHqotwKn6VOMbcqM+lLkD8o/PsAE9z2exQAAABji0+Iz+bDzJOrf/Vp4UDc2NxCYA==</LastKnownProtectedHashedPassword>
+      <Salt>uehXrxkq</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAD88QeK/0FVMP8Nudq0zsxrAAAAAASAAACgAAAAEAAAAKqzcWG/mwZwcxBbAJTbj4IoAAAADugxhsq1Mj/MANhHCRbM2QLZ7gvChDWWExvSD9GiK+REHYa1pMDC8xQAAABylVSeXduZ8p24GvAd5peOKsawaw==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>LoadBalancer_PlaceHolder.dtsx</Name>
       <LastWriteTime>2023-03-01T09:43:41.564279Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
       <Salt>nVIw8XIB</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAADX4Gx4yaKur9CFXdht//uVAAAAAASAAACgAAAAEAAAADEr+4owBRN+ZyisJcmGgRooAAAADtAp2GOnFaV7zJoMRNz4xpoDISPqeXcs1toW2mNLNlcFzilrMlCDFxQAAAAw3vxsmljtUIFjo4DHAC6/ut0Zmg==</LastKnownProtectedHashedPassword>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAAoyBp2obt76gcIbnCgcarVAAAAAASAAACgAAAAEAAAANP1nQUCHXwK7dPaQSa/iDMoAAAAtUhyBh/BVwSgZ+yCY2Q/8gSLWxW/zI/RNvTrKgiUM/XIGwPuTG159BQAAAAZrwKBA9cJNP9ShFgpGccou+aiUA==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>06_DimResult.dtsx</Name>
       <LastWriteTime>2023-03-01T09:42:30.3516408Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
       <Salt>4Gd3ei8X</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAAOdJfKNurQax6fEHnSjBYZAAAAAASAAACgAAAAEAAAAKsDEZRrXbcHPoz5AwZnLEEoAAAAaQRClRHKlWKd9lSRPrXdyl9Kszq74HNCugsg9GsVXxbkjDPLC0XjZRQAAADrUgJhdj7AwjTrQxhHTivPRrWHBA==</LastKnownProtectedHashedPassword>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAAsw72tm+sN6oovN/0BUoC/AAAAAASAAACgAAAAEAAAAEigpMdF6n9h4JW7iLiGnzkoAAAAFp3VNpN8kf1OM0E+vRtZDkuqwBMwxpuQFOgxhMyFaTx1/eipVUkhThQAAAA5iYABl8EOVTOH87B4VSB8LgOlmg==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>07_Merge_Load_DimDebtor.dtsx</Name>
       <LastWriteTime>2023-03-01T09:42:43.3392493Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
       <Salt>tpbU8XbH</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAACfH1R2PJkJd8rB/Inq3TeJAAAAAASAAACgAAAAEAAAAK/Co6f0v0csK2wMcIcIseQoAAAAS0DbRcf3zeQnFauvxY6v88fnb0BAym5C3kqRDYcYtCmVjL6GB4UhyhQAAACjHRlDTvzjF0k0NizFJuleo/NnJA==</LastKnownProtectedHashedPassword>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAABMycefCtw0XgcbsDfVr58hAAAAAASAAACgAAAAEAAAAOUCBdoOO+7KwPeXW3/ZX5woAAAAvxnSkQtLPypVOA/vFvYxBRZe5rTH3wRDBBGmMebiQI8P3QjRiJYOdxQAAACGimkPCJ6yZVgWpzhdSZ4yOgD66w==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>08_Merge_Load_DimPhoneNumber.dtsx</Name>
       <LastWriteTime>2023-03-24T11:55:51.7603537Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
       <Salt>DhxA4PNB</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAAFO6bEx4z0mf6/zn2axbOqAAAAAASAAACgAAAAEAAAANQ6frZJsLJK6Wx5ug1vKKUoAAAABtYzzfJJ4HWhnZdADI/x7YeZ1qSh0Y9+18NZmCbQT2YFS8rCwMik2RQAAAAWtFsBLp/NB6WwqzUpYbmYHrIdyA==</LastKnownProtectedHashedPassword>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAADtIeF3Y9HdMdW4tDImRnGpAAAAAASAAACgAAAAEAAAAEerhRFPomQZg3xxuLLZkVcoAAAAdkt5JXfR3VcaA/jC+s+VlE3y4SVU6EKLlBgvF86+SiA25brhmXCzmhQAAABzeBIe7gbRVNkc2I4t9GO7ZgiNDA==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>DataProfiling.dtsx</Name>
       <LastWriteTime>2023-03-01T09:43:11.3596194Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
       <Salt>V9DFlW0U</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAADev3CJP8qSXLBSg4U72TU/AAAAAASAAACgAAAAEAAAAMJNOdE2OVFKXaLixamZg9UoAAAANY9lKF+89wpfatc2HZXfGcbSKpk6dOYuV0f3wpK/ncsXVoCiuSiFLxQAAAAQbd1V+/vxzlp/W/x6JS6cCIpjLg==</LastKnownProtectedHashedPassword>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAADd377lWAVZPwMjuEWlrqHrAAAAAASAAACgAAAAEAAAAAgwfF1SFzCC9fGmi5R8jZsoAAAAUC3v9w08cPbGNW21lMbmz4PXAa1HJfAT0Scebd2oMfLoar2d++xQPRQAAADRkzwg712x1Qw0EcNTh53plTs9GA==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>09_Initial_Load_FactTable.dtsx</Name>
       <LastWriteTime>2023-04-20T10:56:12.760068Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
       <Salt>RLL0/M6y</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAACoaq/ZhnZ8VSNpnG6/s64tAAAAAASAAACgAAAAEAAAAL9TU6YHdYq33l8Gzv2IYxcoAAAAE/FaSQ54aM5Z6qFytdQCR2hKSke85R74IOxHiUImj/vjme7wr0EJNRQAAAD8y0kBWFUYOEm3I9FXCE89wo2ngQ==</LastKnownProtectedHashedPassword>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAADkoSeT0xoC51VI+IC7ypT3AAAAAASAAACgAAAAEAAAAJDS9r+K6X3/pgEe0Zk4s0IoAAAAWMN5Z3D79NUGERPWau9VJ0LWzEbapaqg+Yk5fuGuhZAZYYPjC54mhhQAAAD1Do1TN8ASABcfG6wMcJ2W+RgF1w==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>10_Incremental_Load_Fact_Table.dtsx</Name>
       <LastWriteTime>2023-03-30T08:45:18.6690747Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
       <Salt>64g9Av1U</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAABLt53mxLIUnFhZcB9x6XNTAAAAAASAAACgAAAAEAAAAN7jeQnYBbmXIhy5dqQsLckoAAAA+YM6AIYwgdUvqLqa2PzBn+PSDDvSD0FnV8ubXn7QkGYJveQxS1xTkxQAAAA+7zS9/A/Q6JoeJ/HJbVFB3FDcsg==</LastKnownProtectedHashedPassword>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAABNvJqktw+fHwbrqab3664tAAAAAASAAACgAAAAEAAAAIy/N35VQkbaIwug7LY16ssoAAAAoUF5dkl2X7EILh0QHc/wNts9YHMbSC67PbYUUKDnZuWfba1fHiM8ORQAAACJUwIZK3RbU2czWpwUy/IRuLmcaQ==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>11_CDC_TSQL_DimDebtCollector.dtsx</Name>
+      <LastWriteTime>2023-04-24T06:40:24.2542803Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
+      <Salt>LKMjlVPM</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhXy3jDeASEy7Wv5Bc7pMJwAAAAACAAAAAAADZgAAwAAAABAAAAC6zZMX+nA/FpLrgM6OhbvJAAAAAASAAACgAAAAEAAAABMShCqYX5j0oiBJFqN4hD8oAAAAfilDU/6/8+UCGzZL/uwTVRShW75+seYGRKaPBX2eSSYnq1hgojagQRQAAAAm4Q0UNdhYr6Ce89dPwHYHjwxcpA==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
 </BuildLog>

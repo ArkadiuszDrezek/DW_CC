@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{1333CCD2-2A4C-4641-9554-100645E59610}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{08707289-2098-4CB0-87BE-9A5674084589}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1104,7 +1104,7 @@
         <NodeLayout
           Size="134,42"
           Id="Package\Incremental Load\CDC Source"
-          TopLeft="418,50" />
+          TopLeft="418,49" />
         <EdgeLayout
           Id="Package\Incremental Load.Paths[UpdateOutput]"
           TopLeft="485,176">
@@ -1143,18 +1143,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Incremental Load.Paths[Output]"
-          TopLeft="485,92">
+          TopLeft="485,91">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42"
+              EndConnector="0,43"
               Start="0,0"
-              End="0,34.5">
+              End="0,35.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.5" />
+                    End="0,35.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

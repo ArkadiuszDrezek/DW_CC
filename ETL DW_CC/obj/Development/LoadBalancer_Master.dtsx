@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="65"
-  DTS:VersionGUID="{9B44324D-2831-4402-A836-893478D23D53}">
+  DTS:VersionBuild="66"
+  DTS:VersionGUID="{0799743D-F23B-420B-8916-9FB12795DFFE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -74,6 +74,15 @@
       DTS:ObjectName="ExecutionEnded_Path10">
       <DTS:VariableValue
         DTS:DataType="7">3/30/2023 11:06:33 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A77B2A5B-75FA-454E-875D-DD6EC0806E68}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionEnded_Path11">
+      <DTS:VariableValue
+        DTS:DataType="7">4/24/2023 9:10:56 AM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -201,6 +210,43 @@
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="Path10_Runner">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{067A118D-B4F2-4DAF-AD92-84536E63A780}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="path11_PackageName">
+      <DTS:VariableValue
+        DTS:DataType="8">LoadBalancer_PlaceHolder.dtsx</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EB465D68-EE25-4B5E-BD31-C0617574EEE7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="path11_Parameter">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{441FB444-473E-4EFF-9AF1-12F7EC299FD6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Path11_Runner">
       <DTS:VariableValue
         DTS:DataSubType="ManagedSerializable"
         DTS:DataType="13">
@@ -584,6 +630,15 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{413E53C0-3799-49C5-A1AC-B8B0CDC246FB}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sqlPackageRunner_Path11">
+      <DTS:VariableValue
+        DTS:DataType="8">select [PackageName],[Parameter]  from [Administration].[PackageRunner] where [LoadPath] = 11 and [RunPackage] = 'Y' order by [LoadOrder]</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{0007B562-93E0-4763-9E3C-610B37D33EF6}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
@@ -812,6 +867,24 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\EXP - Set ExecutionEnded Path 11"
+      DTS:CreationName="Microsoft.ExpressionTask"
+      DTS:Description="Expression Task"
+      DTS:DTSID="{603b4b97-2324-4975-a8fa-fbb615f23871}"
+      DTS:ExecutableType="Microsoft.ExpressionTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EXP - Set ExecutionEnded Path 11"
+      DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="7">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="@[User::ExecutionEnded_Path11] = GETDATE()" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\EXP - Set ExecutionEnded Path 2"
       DTS:CreationName="Microsoft.ExpressionTask"
       DTS:Description="Expression Task"
@@ -820,7 +893,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="EXP - Set ExecutionEnded Path 2"
       DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -856,7 +929,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="EXP - Set ExecutionEnded Path 4"
       DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -874,7 +947,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="EXP - Set ExecutionEnded Path 5"
       DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -892,7 +965,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="EXP - Set ExecutionEnded Path 6"
       DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -910,7 +983,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="EXP - Set ExecutionEnded Path 7"
       DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="6">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -928,7 +1001,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="EXP - Set ExecutionEnded Path 8"
       DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="6">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -1159,6 +1232,209 @@
       </DTS:ForEachVariableMappings>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Path 11"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{753176a6-3077-4cf3-a914-a5ed4d6a24af}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Path 11">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{238df75c-1eaf-497c-aee7-3cb5ade566d4}"
+        DTS:ObjectName="{C5482AA1-3127-41F7-BC1D-4B5A4A0AA637}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::Path11_Runner" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Path 11\EXP - Set ExecutionEnded Current Package Path 11"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{d816577a-f992-42e7-a762-dabe1b961c49}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EXP - Set ExecutionEnded Current Package Path 11"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="7">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::ExecutionEnded_Path11]= getdate()" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Path 11\Path 11"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{57928019-b44b-474d-aa7a-e6cd5216318a}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Path 11"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="PackageName">@[User::path11_PackageName]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>LoadBalancer_PlaceHolder.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Path 11\SQL - Update App-PackageLogger Current Package Path 11 Begin"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{093dc601-0b3d-4796-bb90-39fe7d39eef0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 11 Begin"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="7">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F364A291-5432-42F8-8A5A-14311FB36F5E}"
+              SQLTask:SqlStatementSource="INSERT INTO [Administration].[PackageLogger] &#xA;(   PackageName&#xA;  , DataFlowName&#xA;  , SubflowInformation&#xA;  , ExecutionBegan&#xA;  , ExecutionEnded&#xA;  , ExecutionStatus&#xA;  , RuntimeEnvironment&#xA;)&#xA;VALUES &#xA;(  'Master'&#xA;  ,'Path 11 - Package Begin'&#xA;  , ?&#xA;  , ?&#xA;  , ?&#xA;  , 'Path 11 - ' + ? + ' - Begin'&#xA;  , ?&#xA;)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::path11_PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::ExecutionBegan"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::ExecutionBegan"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::path11_PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="$Project::RuntimeEnvironment"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Path 11\SQL - Update App-PackageLogger Current Package Path 11 Complete"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{028a465f-7279-4485-869e-56dec905ee3b}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 11 Complete"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="7">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F364A291-5432-42F8-8A5A-14311FB36F5E}"
+              SQLTask:SqlStatementSource="INSERT INTO [Administration].[PackageLogger] &#xA;(   PackageName&#xA;  , DataFlowName&#xA;  , SubflowInformation&#xA;  , ExecutionBegan&#xA;  , ExecutionEnded&#xA;  , ExecutionStatus&#xA;  , RuntimeEnvironment&#xA;)&#xA;VALUES &#xA;(  'Master'&#xA;  ,'Path 11 - Package Complete'&#xA;  , ?&#xA;  , ?&#xA;  , ?&#xA;  , 'Path 11 - ' + ? + ' - Complete'&#xA;  , ?&#xA;)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::path11_PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::ExecutionBegan"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::ExecutionEnded_Path11"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::path11_PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="$Project::RuntimeEnvironment"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Path 11.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{144f3e8d-8841-4e99-9031-9a8decddaab8}"
+          DTS:From="Package\Path 11\SQL - Update App-PackageLogger Current Package Path 11 Begin"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Path 11\Path 11" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Path 11.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{377acbe0-54a5-44c6-8922-37fb36547ec9}"
+          DTS:From="Package\Path 11\Path 11"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Path 11\EXP - Set ExecutionEnded Current Package Path 11" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Path 11.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{70100cab-116a-462c-a1f3-6de8c0cc34c4}"
+          DTS:From="Package\Path 11\EXP - Set ExecutionEnded Current Package Path 11"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Path 11\SQL - Update App-PackageLogger Current Package Path 11 Complete" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{D93AEDE4-0EBC-4A18-829E-1176FF99B0BE}"
+          DTS:ObjectName="{D93AEDE4-0EBC-4A18-829E-1176FF99B0BE}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::path11_PackageName" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{9B095BA3-85AA-4568-8024-519331B19746}"
+          DTS:ObjectName="{9B095BA3-85AA-4568-8024-519331B19746}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::path11_Parameter" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Path 2"
       DTS:CreationName="STOCK:FOREACHLOOP"
       DTS:Description="Foreach Loop Container"
@@ -1189,7 +1465,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="EXP - Set ExecutionEnded Current Package Path 2"
           DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1228,7 +1504,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 2 Begin"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1278,7 +1554,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 2 Complete"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1595,7 +1871,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="EXP - Set ExecutionEnded Current Package Path 4"
           DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1634,7 +1910,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 4 Begin"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1684,7 +1960,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 4 Complete"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1798,7 +2074,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="EXP - Set ExecutionEnded Current Package Path 5"
           DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1837,7 +2113,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 5 Begin"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1887,7 +2163,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 5 Complete"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2001,7 +2277,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="EXP - Set ExecutionEnded Current Package Path 6"
           DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2040,7 +2316,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 6 Begin"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2090,7 +2366,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 6 Complete"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2204,7 +2480,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="EXP - Set ExecutionEnded Current Package Path 7"
           DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2243,7 +2519,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 7 Begin"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2293,7 +2569,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 7 Complete"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2407,7 +2683,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="EXP - Set ExecutionEnded Current Package Path 8"
           DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2446,7 +2722,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 8 Begin"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2496,7 +2772,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - Update App-PackageLogger Current Package Path 8 Complete"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2807,6 +3083,30 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\SQL - Path 11 11_CDC_TSQL_DimDebtCollector"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{55e3eb27-5e78-4166-947d-5c7e24e740e2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Path 11 11_CDC_TSQL_DimDebtCollector"
+      DTS:ThreadHint="7">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F364A291-5432-42F8-8A5A-14311FB36F5E}"
+          SQLTask:SqlStmtSourceType="Variable"
+          SQLTask:SqlStatementSource="User::sqlPackageRunner_Path11"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::Path11_Runner" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\SQL - Path 2 Load DimAdrress"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -2814,7 +3114,7 @@
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - Path 2 Load DimAdrress"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -2862,7 +3162,7 @@
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - Path 4 Load DimDebtCallector - Initial Load"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -2886,7 +3186,7 @@
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - Path 5 Load DimDebtCallector - Incremental Load"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -2910,7 +3210,7 @@
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - Path 6 Load DimDebtLiability"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -2934,7 +3234,7 @@
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - Path 7 Load 07_Merge_Load_DimDebtor"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="6">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -2958,7 +3258,7 @@
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - Path 8 Load 08_Merge_Load_DimPhoneNumber"
-      DTS:ThreadHint="6">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -3131,6 +3431,44 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\SQL - Update App-PackageLogger Path 11"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{a86b2ba1-749f-4b18-b9f2-a48c1b9d7837}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Update App-PackageLogger Path 11"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="7">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F364A291-5432-42F8-8A5A-14311FB36F5E}"
+          SQLTask:SqlStatementSource="INSERT INTO [Administration].[PackageLogger] &#xA;(   PackageName&#xA;  , DataFlowName&#xA;  , ExecutionBegan&#xA;  , ExecutionEnded&#xA;  , RuntimeEnvironment&#xA;)&#xA;VALUES &#xA;(  'Master'&#xA;  ,'Path 11 Complete'&#xA;  , ?&#xA;  , ?&#xA;  , ?&#xA;)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::ExecutionBegan"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::ExecutionEnded_Path11"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="$Project::RuntimeEnvironment"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\SQL - Update App-PackageLogger Path 2"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -3139,7 +3477,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - Update App-PackageLogger Path 2"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -3215,7 +3553,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - Update App-PackageLogger Path 4"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -3253,7 +3591,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - Update App-PackageLogger Path 5"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -3291,7 +3629,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - Update App-PackageLogger Path 6"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -3329,7 +3667,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - Update App-PackageLogger Path 7"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="6">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -3367,7 +3705,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - Update App-PackageLogger Path 8"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="6">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -3733,6 +4071,22 @@
       DTS:ObjectName="Constraint 41"
       DTS:To="Package\SQL - Path 9 09_Initial_Load_FactTable" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 42]"
+      DTS:CreationName=""
+      DTS:DTSID="{FC944583-2434-4142-9F9B-5BC1DF4DCA43}"
+      DTS:From="Package\SQL - Update App-PackageLogger Path 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 42"
+      DTS:To="Package\SQL - Path 11 11_CDC_TSQL_DimDebtCollector" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 43]"
+      DTS:CreationName=""
+      DTS:DTSID="{912D94AD-F833-4029-AA81-D6FE4D1ECC6E}"
+      DTS:From="Package\SQL - Path 11 11_CDC_TSQL_DimDebtCollector"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 43"
+      DTS:To="Package\Path 11" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 44]"
       DTS:CreationName=""
       DTS:DTSID="{B92B43D5-EACF-4AC1-A5CB-80B0AD5D98B2}"
@@ -3741,6 +4095,14 @@
       DTS:ObjectName="Constraint 44"
       DTS:To="Package\Path 9" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 45]"
+      DTS:CreationName=""
+      DTS:DTSID="{20942DBD-A16A-46D5-96AD-717B866ECFC2}"
+      DTS:From="Package\Path 11"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 45"
+      DTS:To="Package\EXP - Set ExecutionEnded Path 11" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 46]"
       DTS:CreationName=""
       DTS:DTSID="{3008B1C6-E18F-4C65-8ED1-327D788ADA43}"
@@ -3748,6 +4110,22 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 46"
       DTS:To="Package\EXP - Set ExecutionEnded Path 9" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 47]"
+      DTS:CreationName=""
+      DTS:DTSID="{6EBC6246-C296-4E7A-BB3E-B80944A9D471}"
+      DTS:From="Package\EXP - Set ExecutionEnded Path 11"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 47"
+      DTS:To="Package\SQL - Update App-PackageLogger Path 11" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 48]"
+      DTS:CreationName=""
+      DTS:DTSID="{FEE4BB7B-F4DB-43F6-908A-7103F05BD006}"
+      DTS:From="Package\SQL - Update App-PackageLogger Path 11"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 48"
+      DTS:To="Package\SQL - Path 9 09_Initial_Load_FactTable" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 49]"
       DTS:CreationName=""
@@ -4576,7 +4954,7 @@
           PanelSize="418,366"
           Size="418,409"
           Id="Package\Path 8"
-          TopLeft="2874.85714285714,1098.85714285714" />
+          TopLeft="2873.85714285714,1097.85714285714" />
         <NodeLayout
           Size="349,42"
           Id="Package\Path 9\EXP - Set ExecutionEnded Current Package Path 9"
@@ -4725,7 +5103,7 @@
         <NodeLayout
           Size="272,42"
           Id="Package\SQL - Update App-PackageLogger Path 1"
-          TopLeft="1591.1746031746,798.010582010582" />
+          TopLeft="1589.74603174603,796.582010582011" />
         <NodeLayout
           Size="272,42"
           Id="Package\SQL - Update App-PackageLogger Path 2"
@@ -4804,30 +5182,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="1694.1746031746,840.010582010582">
+          TopLeft="1692.74603174603,838.582010582011">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-424.11904761904,93.417989417989"
+              EndConnector="-422.690476190469,94.8465608465604"
               Start="0,0"
-              End="-424.11904761904,85.917989417989">
+              End="-422.690476190469,87.3465608465604">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.2596356069158" />
+                    End="0,36.8752960970532" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,36.2596356069158"
-                    Point2="0,40.2596356069158"
-                    Point3="-4,40.2596356069158" />
+                    Point1="0,36.8752960970532"
+                    Point2="0,40.8752960970532"
+                    Point3="-4,40.8752960970532" />
                   <mssgle:LineSegment
-                    End="-420.11904761904,40.2596356069158" />
+                    End="-418.690476190469,40.8752960970532" />
                   <mssgle:CubicBezierSegment
-                    Point1="-420.11904761904,40.2596356069158"
-                    Point2="-424.11904761904,40.2596356069158"
-                    Point3="-424.11904761904,44.2596356069158" />
+                    Point1="-418.690476190469,40.8752960970532"
+                    Point2="-422.690476190469,40.8752960970532"
+                    Point3="-422.690476190469,44.8752960970532" />
                   <mssgle:LineSegment
-                    End="-424.11904761904,85.917989417989" />
+                    End="-422.690476190469,87.3465608465604" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4838,30 +5216,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 11]"
-          TopLeft="1727.1746031746,840.010582010582">
+          TopLeft="1725.74603174603,838.582010582011">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-84.9007936507928,84.2751322751321"
+              EndConnector="-83.4722222222185,85.7037037037034"
               Start="0,0"
-              End="-84.9007936507928,76.7751322751321">
+              End="-83.4722222222185,78.2037037037034">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.1375661375661" />
+                    End="0,38.8518518518517" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,38.1375661375661"
-                    Point2="0,42.1375661375661"
-                    Point3="-4,42.1375661375661" />
+                    Point1="0,38.8518518518517"
+                    Point2="0,42.8518518518517"
+                    Point3="-4,42.8518518518517" />
                   <mssgle:LineSegment
-                    End="-80.9007936507928,42.1375661375661" />
+                    End="-79.4722222222185,42.8518518518517" />
                   <mssgle:CubicBezierSegment
-                    Point1="-80.9007936507928,42.1375661375661"
-                    Point2="-84.9007936507928,42.1375661375661"
-                    Point3="-84.9007936507928,46.1375661375661" />
+                    Point1="-79.4722222222185,42.8518518518517"
+                    Point2="-83.4722222222185,42.8518518518517"
+                    Point3="-83.4722222222185,46.8518518518517" />
                   <mssgle:LineSegment
-                    End="-84.9007936507928,76.7751322751321" />
+                    End="-83.4722222222185,78.2037037037034" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4872,30 +5250,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 12]"
-          TopLeft="1760.1746031746,840.010582010582">
+          TopLeft="1758.74603174603,838.582010582011">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="313.317460317467,79.830687830688"
+              EndConnector="314.746031746041,81.2592592592594"
               Start="0,0"
-              End="313.317460317467,72.330687830688">
+              End="314.746031746041,73.7592592592594">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.4040202784973" />
+                    End="0,31.0196807686348" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,30.4040202784973"
-                    Point2="0,34.4040202784973"
-                    Point3="4,34.4040202784973" />
+                    Point1="0,31.0196807686348"
+                    Point2="0,35.0196807686348"
+                    Point3="4,35.0196807686348" />
                   <mssgle:LineSegment
-                    End="309.317460317467,34.4040202784973" />
+                    End="310.746031746041,35.0196807686348" />
                   <mssgle:CubicBezierSegment
-                    Point1="309.317460317467,34.4040202784973"
-                    Point2="313.317460317467,34.4040202784973"
-                    Point3="313.317460317467,38.4040202784973" />
+                    Point1="310.746031746041,35.0196807686348"
+                    Point2="314.746031746041,35.0196807686348"
+                    Point3="314.746031746041,39.0196807686348" />
                   <mssgle:LineSegment
-                    End="313.317460317467,72.330687830688" />
+                    End="314.746031746041,73.7592592592594" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5038,18 +5416,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 19]"
-          TopLeft="1730.40476190476,761.899470899471">
+          TopLeft="1729.69047619047,761.899470899471">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,36.1111111111109"
+              EndConnector="0,34.6825396825396"
               Start="0,0"
-              End="0,28.6111111111109">
+              End="0,27.1825396825396">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.6111111111109" />
+                    End="0,27.1825396825396" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5192,30 +5570,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 25]"
-          TopLeft="1793.1746031746,840.010582010582">
+          TopLeft="1791.74603174603,838.582010582011">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="611.658730158727,84.3227513227512"
+              EndConnector="613.087301587301,85.7513227513224"
               Start="0,0"
-              End="611.658730158727,76.8227513227512">
+              End="613.087301587301,78.2513227513224">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.653362099964" />
+                    End="0,25.1387989931678" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,24.653362099964"
-                    Point2="0,28.653362099964"
-                    Point3="4,28.653362099964" />
+                    Point1="0,25.1387989931678"
+                    Point2="0,29.1387989931678"
+                    Point3="4,29.1387989931678" />
                   <mssgle:LineSegment
-                    End="607.658730158727,28.653362099964" />
+                    End="609.087301587301,29.1387989931678" />
                   <mssgle:CubicBezierSegment
-                    Point1="607.658730158727,28.653362099964"
-                    Point2="611.658730158727,28.653362099964"
-                    Point3="611.658730158727,32.653362099964" />
+                    Point1="609.087301587301,29.1387989931678"
+                    Point2="613.087301587301,29.1387989931678"
+                    Point3="613.087301587301,33.1387989931678" />
                   <mssgle:LineSegment
-                    End="611.658730158727,76.8227513227512" />
+                    End="613.087301587301,78.2513227513224" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5440,30 +5818,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 32]"
-          TopLeft="1826.1746031746,840.010582010582">
+          TopLeft="1824.74603174603,838.582010582011">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="1245.70634920635,78.533068783071"
+              EndConnector="1247.13492063492,79.9616402116424"
               Start="0,0"
-              End="1245.70634920635,71.033068783071">
+              End="1247.13492063492,72.4616402116424">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.7960898553389" />
+                    End="0,13.1016224730102" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.7960898553389"
-                    Point2="0,16.7960898553389"
-                    Point3="4,16.7960898553389" />
+                    Point1="0,13.1016224730102"
+                    Point2="0,17.1016224730102"
+                    Point3="4,17.1016224730102" />
                   <mssgle:LineSegment
-                    End="1241.70634920635,16.7960898553389" />
+                    End="1243.13492063492,17.1016224730102" />
                   <mssgle:CubicBezierSegment
-                    Point1="1241.70634920635,16.7960898553389"
-                    Point2="1245.70634920635,16.7960898553389"
-                    Point3="1245.70634920635,20.7960898553389" />
+                    Point1="1243.13492063492,17.1016224730102"
+                    Point2="1247.13492063492,17.1016224730102"
+                    Point3="1247.13492063492,21.1016224730102" />
                   <mssgle:LineSegment
-                    End="1245.70634920635,71.033068783071" />
+                    End="1247.13492063492,72.4616402116424" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5636,26 +6014,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="11.9761904761899,138.31349206349"
+              EndConnector="10.9761904761899,137.313492063487"
               Start="0,0"
-              End="11.9761904761899,130.81349206349">
+              End="10.9761904761899,129.813492063487">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,65.1567460317451" />
+                    End="0,64.6567460317435" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,65.1567460317451"
-                    Point2="0,69.1567460317451"
-                    Point3="4,69.1567460317451" />
+                    Point1="0,64.6567460317435"
+                    Point2="0,68.6567460317435"
+                    Point3="4,68.6567460317435" />
                   <mssgle:LineSegment
-                    End="7.97619047618991,69.1567460317451" />
+                    End="6.97619047618991,68.6567460317435" />
                   <mssgle:CubicBezierSegment
-                    Point1="7.97619047618991,69.1567460317451"
-                    Point2="11.9761904761899,69.1567460317451"
-                    Point3="11.9761904761899,73.1567460317451" />
+                    Point1="6.97619047618991,68.6567460317435"
+                    Point2="10.9761904761899,68.6567460317435"
+                    Point3="10.9761904761899,72.6567460317435" />
                   <mssgle:LineSegment
-                    End="11.9761904761899,130.81349206349" />
+                    End="10.9761904761899,129.813492063487" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5666,30 +6044,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 39]"
-          TopLeft="3083.85714285714,1507.85714285714">
+          TopLeft="3082.85714285714,1506.85714285714">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="13.2380952380945,42.6507936507955"
+              EndConnector="14.2380952381,43.6507936508001"
               Start="0,0"
-              End="13.2380952380945,35.1507936507955">
+              End="14.2380952381,36.1507936508001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.3253968253975" />
+                    End="0,17.8253968254" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.3253968253975"
-                    Point2="0,21.3253968253975"
-                    Point3="4,21.3253968253975" />
+                    Point1="0,17.8253968254"
+                    Point2="0,21.8253968254"
+                    Point3="4,21.8253968254" />
                   <mssgle:LineSegment
-                    End="9.2380952380945,21.3253968253975" />
+                    End="10.2380952381,21.8253968254" />
                   <mssgle:CubicBezierSegment
-                    Point1="9.2380952380945,21.3253968253975"
-                    Point2="13.2380952380945,21.3253968253975"
-                    Point3="13.2380952380945,25.3253968253975" />
+                    Point1="10.2380952381,21.8253968254"
+                    Point2="14.2380952381,21.8253968254"
+                    Point3="14.2380952381,25.8253968254" />
                   <mssgle:LineSegment
-                    End="13.2380952380945,35.1507936507955" />
+                    End="14.2380952381,36.1507936508001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5922,30 +6300,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 8]"
-          TopLeft="1628.1746031746,840.010582010582">
+          TopLeft="1626.74603174603,838.582010582011">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-1302.4126984127,110.132275132275"
+              EndConnector="-1300.98412698412,111.560846560846"
               Start="0,0"
-              End="-1302.4126984127,102.632275132275">
+              End="-1300.98412698412,104.060846560846">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.5543016178854" />
+                    End="0,19.8598342355567" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19.5543016178854"
-                    Point2="0,23.5543016178854"
-                    Point3="-4,23.5543016178854" />
+                    Point1="0,19.8598342355567"
+                    Point2="0,23.8598342355567"
+                    Point3="-4,23.8598342355567" />
                   <mssgle:LineSegment
-                    End="-1298.4126984127,23.5543016178854" />
+                    End="-1296.98412698412,23.8598342355567" />
                   <mssgle:CubicBezierSegment
-                    Point1="-1298.4126984127,23.5543016178854"
-                    Point2="-1302.4126984127,23.5543016178854"
-                    Point3="-1302.4126984127,27.5543016178854" />
+                    Point1="-1296.98412698412,23.8598342355567"
+                    Point2="-1300.98412698412,23.8598342355567"
+                    Point3="-1300.98412698412,27.8598342355567" />
                   <mssgle:LineSegment
-                    End="-1302.4126984127,102.632275132275" />
+                    End="-1300.98412698412,104.060846560846" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5956,30 +6334,313 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="1661.1746031746,840.010582010582">
+          TopLeft="1659.74603174603,838.582010582011">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-861.337301587303,101.703703703704"
+              EndConnector="-859.908730158729,103.132275132275"
               Start="0,0"
-              End="-861.337301587303,94.2037037037042">
+              End="-859.908730158729,95.6322751322754">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.5595109672781" />
+                    End="0,31.0449478604819" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,30.5595109672781"
-                    Point2="0,34.5595109672781"
-                    Point3="-4,34.5595109672781" />
+                    Point1="0,31.0449478604819"
+                    Point2="0,35.0449478604819"
+                    Point3="-4,35.0449478604819" />
                   <mssgle:LineSegment
-                    End="-857.337301587303,34.5595109672781" />
+                    End="-855.908730158729,35.0449478604819" />
                   <mssgle:CubicBezierSegment
-                    Point1="-857.337301587303,34.5595109672781"
-                    Point2="-861.337301587303,34.5595109672781"
-                    Point3="-861.337301587303,38.5595109672781" />
+                    Point1="-855.908730158729,35.0449478604819"
+                    Point2="-859.908730158729,35.0449478604819"
+                    Point3="-859.908730158729,39.0449478604819" />
                   <mssgle:LineSegment
-                    End="-861.337301587303,94.2037037037042" />
+                    End="-859.908730158729,95.6322751322754" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="304,42"
+          Id="Package\SQL - Path 11 11_CDC_TSQL_DimDebtCollector"
+          TopLeft="3592.53968253968,914.222222222224" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 42]"
+          TopLeft="1828.4126984127,838.582010582011">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="1916.12698412699,75.6402116402136"
+              Start="0,0"
+              End="1916.12698412699,68.1402116402136">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.8898054409869" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.8898054409869"
+                    Point2="0,14.8898054409869"
+                    Point3="4,14.8898054409869" />
+                  <mssgle:LineSegment
+                    End="1912.12698412699,14.8898054409869" />
+                  <mssgle:CubicBezierSegment
+                    Point1="1912.12698412699,14.8898054409869"
+                    Point2="1916.12698412699,14.8898054409869"
+                    Point3="1916.12698412699,18.8898054409869" />
+                  <mssgle:LineSegment
+                    End="1916.12698412699,68.1402116402136" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="321,42"
+          Id="Package\Path 11\EXP - Set ExecutionEnded Current Package Path 11"
+          TopLeft="23.2142857142858,191.365079365081" />
+        <NodeLayout
+          Size="369,42"
+          Id="Package\Path 11\Path 11"
+          TopLeft="16.230158730159,112.000000000002" />
+        <NodeLayout
+          Size="388,42"
+          Id="Package\Path 11\SQL - Update App-PackageLogger Current Package Path 11 Begin"
+          TopLeft="5.5,22.793650793653" />
+        <NodeLayout
+          Size="406,42"
+          Id="Package\Path 11\SQL - Update App-PackageLogger Current Package Path 11 Complete"
+          TopLeft="4.64285714285643,268.507936507939" />
+        <EdgeLayout
+          Id="Package\Path 11.PrecedenceConstraints[Constraint]"
+          TopLeft="200.11507936508,64.793650793653">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.2063492063488"
+              Start="0,0"
+              End="0,39.7063492063488">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.7063492063488" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Path 11.PrecedenceConstraints[Constraint 1]"
+          TopLeft="200.730158730159,154.000000000002">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.0158730158732,37.3650793650792"
+              Start="0,0"
+              End="-17.0158730158732,29.8650793650792">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.6825396825396" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.6825396825396"
+                    Point2="0,18.6825396825396"
+                    Point3="-4,18.6825396825396" />
+                  <mssgle:LineSegment
+                    End="-13.0158730158732,18.6825396825396" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.0158730158732,18.6825396825396"
+                    Point2="-17.0158730158732,18.6825396825396"
+                    Point3="-17.0158730158732,22.6825396825396" />
+                  <mssgle:LineSegment
+                    End="-17.0158730158732,29.8650793650792" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Path 11.PrecedenceConstraints[Constraint 2]"
+          TopLeft="183.714285714286,233.365079365081">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.9285714285706,35.142857142858"
+              Start="0,0"
+              End="23.9285714285706,27.642857142858">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.571428571429" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.571428571429"
+                    Point2="0,17.571428571429"
+                    Point3="4,17.571428571429" />
+                  <mssgle:LineSegment
+                    End="19.9285714285706,17.571428571429" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.9285714285706,17.571428571429"
+                    Point2="23.9285714285706,17.571428571429"
+                    Point3="23.9285714285706,21.571428571429" />
+                  <mssgle:LineSegment
+                    End="23.9285714285706,27.642857142858" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="418,366"
+          Size="418,409"
+          Id="Package\Path 11"
+          TopLeft="3570,1119.28571428571" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\EXP - Set ExecutionEnded Path 11"
+          TopLeft="3671.5873015873,1567.26984126984" />
+        <NodeLayout
+          Size="278,42"
+          Id="Package\SQL - Update App-PackageLogger Path 11"
+          TopLeft="3648.25396825397,1703.93650793651" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 43]"
+          TopLeft="3744.53968253968,956.222222222224">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="34.4603174603185,163.06349206349"
+              Start="0,0"
+              End="34.4603174603185,155.56349206349">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.5317460317451" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,77.5317460317451"
+                    Point2="0,81.5317460317451"
+                    Point3="4,81.5317460317451" />
+                  <mssgle:LineSegment
+                    End="30.4603174603185,81.5317460317451" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30.4603174603185,81.5317460317451"
+                    Point2="34.4603174603185,81.5317460317451"
+                    Point3="34.4603174603185,85.5317460317451" />
+                  <mssgle:LineSegment
+                    End="34.4603174603185,155.56349206349" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 45]"
+          TopLeft="3779,1528.28571428571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.5873015873008,38.984126984129"
+              Start="0,0"
+              End="12.5873015873008,31.484126984129">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.4920634920645" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.4920634920645"
+                    Point2="0,19.4920634920645"
+                    Point3="4,19.4920634920645" />
+                  <mssgle:LineSegment
+                    End="8.58730158730077,19.4920634920645" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.58730158730077,19.4920634920645"
+                    Point2="12.5873015873008,19.4920634920645"
+                    Point3="12.5873015873008,23.4920634920645" />
+                  <mssgle:LineSegment
+                    End="12.5873015873008,31.484126984129" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 47]"
+          TopLeft="3789.42063492063,1609.26984126984">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,94.6666666666667"
+              Start="0,0"
+              End="0,87.1666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.1666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 48]"
+          TopLeft="3787.25396825397,1745.93650793651">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-2033,494.85714285714"
+              Start="0,0"
+              End="-2033,487.35714285714">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,393.251526662497" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,393.251526662497"
+                    Point2="0,397.251526662497"
+                    Point3="-4,397.251526662497" />
+                  <mssgle:LineSegment
+                    End="-2029,397.251526662497" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-2029,397.251526662497"
+                    Point2="-2033,397.251526662497"
+                    Point3="-2033,401.251526662497" />
+                  <mssgle:LineSegment
+                    End="-2033,487.35714285714" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
