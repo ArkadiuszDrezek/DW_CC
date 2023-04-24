@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{BE007089-A7DA-49CD-B579-CC38FCA36456}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{2C3EEAEB-8C19-4A30-BBAF-DAD257CDBBED}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -48,7 +48,7 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="126,42"
+          Size="130,42"
           Id="Package\Load data"
           TopLeft="490,78" />
       </GraphLayout>
