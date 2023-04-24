@@ -12,8 +12,8 @@
   DTS:ObjectName="02_SCD_Hashbytes_DimAddress"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{721078E8-1321-44E1-81D3-F196AAC63FF1}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{5BACA9BA-78CC-4596-B36A-4BB9D6C127CA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1215,7 +1215,7 @@ where [refTable].[HistoricalHashKeyASCII] = ?</property>
           Id="Package\Truncate stg DimAddress"
           TopLeft="384.666666666667,61" />
         <NodeLayout
-          Size="205,42"
+          Size="208,42"
           Id="Package\Update_Insert DimAddress"
           TopLeft="384.666666666667,267" />
         <EdgeLayout
@@ -1242,7 +1242,7 @@ where [refTable].[HistoricalHashKeyASCII] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="487.166666666667,214">
+          TopLeft="487.916666666667,214">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
