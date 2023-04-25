@@ -12,8 +12,8 @@
   DTS:ObjectName="02_SCD_Hashbytes_DimAddress"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{FB82133A-711F-406D-BC01-43DDE01DDBDA}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{AF8DDAFF-C4DC-4A98-ABCB-02E5BA93B6A9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1215,7 +1215,7 @@ where [refTable].[HistoricalHashKeyASCII] = ?</property>
           Id="Package\Truncate stg DimAddress"
           TopLeft="384.666666666667,61" />
         <NodeLayout
-          Size="219,42"
+          Size="225,42"
           Id="Package\Update_Insert DimAddress"
           TopLeft="384.666666666667,267" />
         <EdgeLayout
@@ -1242,18 +1242,30 @@ where [refTable].[HistoricalHashKeyASCII] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="490.666666666667,214">
+          TopLeft="487.166666666667,214">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,53"
+              EndConnector="10,53"
               Start="0,0"
-              End="0,45.5">
+              End="10,45.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.5" />
+                    End="0,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5"
+                    Point2="0,26.5"
+                    Point3="4,26.5" />
+                  <mssgle:LineSegment
+                    End="6,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6,26.5"
+                    Point2="10,26.5"
+                    Point3="10,30.5" />
+                  <mssgle:LineSegment
+                    End="10,45.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
